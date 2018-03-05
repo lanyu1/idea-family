@@ -1,0 +1,1091 @@
+li {
+	list-style: none
+}
+
+a {
+	text-decoration: none
+}
+
+.clearfix {
+	zoom: 1
+}
+
+.clearfix:after,
+.clearfix:before {
+	content: '';
+	display: table
+}
+
+.clearfix:after {
+	clear: both
+}
+
+.fl {
+	float: left
+}
+
+.fr {
+	float: right
+}
+
+.mr32 {
+	margin-right: 32px
+}
+
+.guaranteeBox {
+	width: 100%;
+	padding: 100px 0 80px
+}
+
+.guarantee {
+	width: 980px;
+	margin: 0 auto
+}
+
+.guarantee>h3 {
+	font-size: 32px;
+	color: #333
+}
+
+.guarantee>h3,
+.guarantee>p {
+	font-family: PingFangSC-Light;
+	line-height: 32px;
+	letter-spacing: 1px;
+	font-weight: lighter;
+	text-align: center
+}
+
+.guarantee>p {
+	width: 620px;
+	margin: 24px auto 0;
+	font-size: 18px;
+	color: #666
+}
+
+.guarantee ul {
+	margin-top: 50px
+}
+
+.guarantee ul li {
+	margin-top: 28px
+}
+
+.guarantee ul li .item {
+	width: 320px
+}
+
+.guarantee ul li .item3 {
+	width: 330px
+}
+
+.guarantee ul li .item>h4 {
+	margin-top: 50px;
+	font-size: 24px;
+	color: #333;
+	letter-spacing: 1.17px
+}
+
+.guarantee ul li .item>h4,
+.guarantee ul li .item>p {
+	font-family: PingFangSC-Light;
+	line-height: 24px;
+	font-weight: lighter
+}
+
+.guarantee ul li .item>p {
+	margin-top: 20px;
+	font-size: 14px;
+	color: #999;
+	letter-spacing: .7px
+}
+
+.guarantee ul li .item .detail1 {
+	margin-top: 17px
+}
+
+.guarantee ul li .item .detail1 span {
+	margin-right: 16px;
+	font-family: PingFangSC-Light;
+	font-size: 12px;
+	line-height: 60px;
+	color: #999;
+	font-weight: lighter
+}
+
+.guarantee ul li .item .detail1 img {
+	width: 94px;
+	height: 60px
+}
+
+.guarantee ul li .item .detail2 {
+	margin-top: 32px
+}
+
+.guarantee ul li .item .detail2 p {
+	font-family: PingFangSC-Light;
+	font-size: 12px;
+	line-height: 20px;
+	color: #999;
+	font-weight: lighter
+}
+
+.guarantee ul li .item .detail2 .num,
+.guarantee ul li .item .detail2 .percent {
+	font-family: PingFangSC-Regular;
+	font-size: 26px;
+	line-height: 36px;
+	color: #666;
+	position: relative
+}
+
+.guarantee ul li .item .detail2 .percent:after {
+	content: '%';
+	position: absolute;
+	right: -26px;
+	top: 8px;
+	font-size: 24px;
+	line-height: 24px;
+	color: #666
+}
+
+.guarantee ul li .item .detail2 img {
+	margin: 10px 30px 0;
+	width: 13px;
+	height: 13px
+}
+
+.guarantee ul li .item .detail3 {
+	margin-top: 30px
+}
+
+.guarantee ul li .item .detail3 img {
+	width: 300px;
+	height: 40px
+}
+
+.guarantee ul li .pic {
+	width: 520px;
+	height: 300px
+}
+
+.initiatorBox {
+	padding: 50px 0;
+	background-image: linear-gradient(-180deg, #f6f6f6, #fff 96%)
+}
+
+.initiator {
+	width: 1080px;
+	margin: 0 auto;
+	text-align: center
+}
+
+.initiator>h3 {
+	font-size: 32px;
+	line-height: 32px;
+	color: #333
+}
+
+.initiator>h3,
+.initiator>p {
+	font-family: PingFangSC-Light;
+	letter-spacing: 1px;
+	font-weight: lighter
+}
+
+.initiator>p {
+	margin-top: 24px;
+	font-size: 18px;
+	line-height: 18px;
+	color: #666
+}
+
+.initiator ul {
+	width: 980px;
+	margin: 68px auto 0
+}
+
+.initiator ul li {
+	margin-right: 25px
+}
+
+.initiator ul li:last-child {
+	margin-right: 0
+}
+
+.initiator .initialstep {
+	width: 280px
+}
+
+.initiator .initialstep2 {
+	width: 300px!important
+}
+
+.initiator .initialstep img {
+	width: 160px;
+	height: 160px
+}
+
+.initiator .initialstep h4 {
+	margin: 40px auto 0;
+	font-family: PingFangSC-Light;
+	font-size: 24px;
+	line-height: 32px;
+	color: #333;
+	letter-spacing: 1.33px;
+	font-weight: lighter
+}
+
+.initiator .initialstep p {
+	margin-top: 18px;
+	font-family: PingFangSC-Light;
+	font-size: 14px;
+	line-height: 24px;
+	color: #999;
+	letter-spacing: .7px;
+	font-weight: lighter
+}
+
+.initiator .initialarrow {
+	width: 10px;
+	height: 20px;
+	margin-top: 70px
+}
+
+.initiator .initialarrow img {
+	width: 100%;
+	height: 100%
+}
+
+.guarantee .learnmore,
+.initiator .learnmore {
+	display: block;
+	box-sizing: border-box;
+	width: 160px;
+	height: 40px;
+	border: 1px solid #333;
+	margin: 60px auto 0;
+	font-size: 14px;
+	line-height: 38px;
+	color: #333;
+	text-align: center
+}
+
+.guarantee .learnmore span,
+.initiator .learnmore span {
+	position: relative
+}
+
+.guarantee .learnmore span:after,
+.initiator .learnmore span:after {
+	content: '>';
+	position: absolute;
+	right: -24px;
+	color: #666;
+	font-size: 18px;
+	line-height: 35px
+}
+
+.selectedBox {
+	width: 100%;
+	background: #f6f6f6
+}
+
+.selected {
+	box-sizing: border-box;
+	width: 1080px;
+	padding: 100px 0;
+	margin: 0 auto
+}
+
+.selected .title {
+	font-size: 32px;
+	color: #333;
+	letter-spacing: 1px;
+	line-height: 32px;
+	text-align: center;
+	font-family: PingFangSC-Light;
+	font-weight: lighter
+}
+
+.selected ul {
+	width: 100%;
+	margin-top: 80px
+}
+
+.selected ul .first {
+	width: 100%;
+	height: 420px;
+	background-color: #fff
+}
+
+.selected ul .first .videobox {
+	width: 650px;
+	height: 100%;
+	line-height: 0;
+	position: relative;
+	background-color: #000
+}
+
+.selected ul .first .videocover {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	overflow: hidden
+}
+
+.selected ul .first .videocover img {
+	width: 100%;
+	height: 100%;
+	-webkit-transition: all 1s ease-out .2s;
+	transition: all 1s ease-out .2s
+}
+
+.selected ul li.first:hover .videocover img {
+	transform: scale(1.1)
+}
+
+.selected ul li.first:hover .selectArrow,
+.selected ul li.rest:hover .selectArrow {
+	transform: translateY(-5px)
+}
+
+.selected .selectArrow {
+	transition: all .6s cubic-bezier(.19, 1, .22, 1)
+}
+
+.selected ul .first .videocover a {
+	display: block;
+	width: 96px;
+	height: 96px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background-image: url('http://images.kaishiba.com/20170904videocover.png');
+	background-size: 100% 100%
+}
+
+.selected ul .first video {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	vertical-align: baseline
+}
+
+.selected ul .first a {
+	width: 430px;
+	height: 100%
+}
+
+.selected ul .rest {
+	width: 524px;
+	height: 350px;
+	margin-top: 40px;
+	position: relative
+}
+
+.selected ul .rest .imgbox,
+.selected ul .rest a {
+	width: 100%;
+	height: 100%
+}
+
+.selected ul .rest a {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: block
+}
+
+.selected ul li .imgbox {
+	overflow: hidden;
+	position: relative;
+	line-height: 0
+}
+
+.selected ul .rest .imgbox img {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	-webkit-transition: all 1s ease-out .2s;
+	transition: all 1s ease-out .2s
+}
+
+.selected ul .rest:hover .bgpic {
+	transform: scale(1.1)
+}
+
+.selected .desc {
+	box-sizing: border-box
+}
+
+.selected .first .desc {
+	padding: 120px 73px 0 77px
+}
+
+.selected .rest .desc {
+	padding: 95px 124px 0 80px
+}
+
+.selected .desc p {
+	color: #333;
+	letter-spacing: .6px
+}
+
+.selected .rest .desc {
+	-webkit-transform: translateZ(0);
+	background-color: rgba(0, 0, 0, .3)
+}
+
+.selected .rest .desc p {
+	color: #fff
+}
+
+.selected .desc .word {
+	position: relative;
+	font-size: 18px;
+	line-height: 32px;
+	font-family: PingFangSC-Light;
+	font-weight: lighter
+}
+
+.selected .desc .dotl,
+.selected .desc .dotr {
+	position: absolute;
+	width: 8px;
+	height: 7px
+}
+
+.selected .desc .dotl {
+	left: -14px;
+	top: 2px
+}
+
+.selected .desc .dotr {
+	right: -14px;
+	bottom: 2px
+}
+
+.selected .desc .author {
+	margin-top: 50px;
+	font-size: 14px;
+	line-height: 14px;
+	color: #666
+}
+
+.selected .desc .name {
+	margin-top: 16px;
+	font-size: 12px;
+	line-height: 12px;
+	color: #666
+}
+
+.selected .desc div {
+	width: 40px;
+	height: 6px;
+	margin-top: 16px;
+	background-image: url('http://images.kaishiba.com/20170904arrow1@4x.png');
+	background-size: 100% 100%
+}
+
+.selected .first .desc div {
+	background-image: url('http://images.kaishiba.com/20170904arrow2@4x.png')
+}
+
+.cooperate {
+	width: 100%;
+	padding: 100px 0 60px
+}
+
+.cooperate h3 {
+	font-size: 28px;
+	line-height: 28px;
+	color: #333;
+	text-align: center;
+	letter-spacing: 1.14px;
+	font-family: PingFangSC-Light;
+	font-weight: lighter
+}
+
+.cooperate ul {
+	width: 1080px;
+	margin: 0 auto
+}
+
+.cooperate ul:first-of-type {
+	margin-top: 60px
+}
+
+.cooperate ul:last-child {
+	margin-top: 20px
+}
+
+.cooperate ul li {
+	width: 120px;
+	height: 80px;
+	margin-right: 40px;
+	line-height: 0
+}
+
+.cooperate ul li:last-child {
+	margin-right: 0
+}
+
+.cooperate img {
+	width: 100%;
+	height: 100%
+}
+
+.slogan {
+	box-sizing: border-box;
+	width: 100%;
+	height: 200px;
+	padding: 60px 0 0;
+	background-color: #7ede98
+}
+
+.slogan p {
+	font-size: 18px;
+	line-height: 18px;
+	color: #333;
+	text-align: center;
+	font-family: PingFangSC-Light;
+	font-weight: lighter
+}
+
+.slogan ul {
+	width: 400px;
+	margin: 30px auto 0
+}
+
+.slogan li {
+	width: 180px
+}
+
+.slogan li:first-child {
+	margin-right: 20px
+}
+
+.slogan a {
+	box-sizing: border-box;
+	display: block;
+	margin: 0 auto;
+	width: 160px;
+	height: 40px;
+	border: unset;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 38px;
+	color: #333;
+	text-align: center;
+	font-family: PingFangSC-Light;
+	font-weight: lighter;
+	background-size: 10px 12px;
+	background-repeat: no-repeat;
+	background-position: 140px 13px
+}
+
+.slogan a.active {
+	color: #333;
+	border: 1px solid #666;
+	background-color: unset
+}
+
+.slogan a:hover {
+	background-image: url('http://images.kaishiba.com/20170913arrow1.png')
+}
+
+footer {
+	box-sizing: border-box;
+	height: 220px;
+	padding: 40px 0 0;
+	background-image: url('http://images.kaishiba.com/20170904bottomwave2@4x.png');
+	background-size: 100% 100%
+}
+
+.introduction {
+	width: 1080px;
+	margin: 0 auto
+}
+
+.introduction h5 {
+	margin-bottom: 20px;
+	font-size: 14px;
+	line-height: 14px;
+	color: #fff;
+	font-family: PingFangSC-Semibold
+}
+
+.introduction .menu>li {
+	margin-right: 80px
+}
+
+.introduction .menu>li:last-child {
+	margin-right: 0
+}
+
+.introduction .menu a {
+	display: inline-block;
+	margin-bottom: 20px;
+	font-size: 12px;
+	line-height: 14px;
+	color: #999
+}
+
+.introduction .menu a:hover {
+	color: #5cb975
+}
+
+.introduction .qrcode li {
+	width: 84px;
+	margin-left: 30px
+}
+
+.introduction .qrcode li:first-child {
+	margin-left: 0
+}
+
+.introduction .qrcode div {
+	line-height: 0;
+	margin-bottom: 10px
+}
+
+.introduction .qrcode img {
+	width: 100%
+}
+
+.introduction .qrcode span {
+	display: inline-block;
+	line-height: 10px
+}
+
+.introduction .copyright,
+.introduction .qrcode span {
+	width: 100%;
+	font-size: 10px;
+	color: #999;
+	text-align: center
+}
+
+.introduction .copyright {
+	margin-top: 102px;
+	line-height: 14px
+}
+
+.introduction .copyright span:first-child {
+	margin-right: 30px
+}
+
+.swiper .swiper-button-prev {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAABwCAYAAABYWvPrAAAABGdBTUEAALGPC/xhBQAABItJREFUeAHtmstOU1EUhml1qElxCFOdwAM4cuRIRYOXMDBBHXBJ9A0Exj4DtxAxaEIEExWdO/MB8BmcGBrjjEv9V9OV7P5tPbd9WZg2MYddKP7f+dfHOZQ9MjJ8DM/A8Ayc6zNQOy/pNzc3L5+enh60Wq3fi4uLU5q7rh9YPiJ07eTkZBvHG8h5xc160V1Y/XhtbW0Z2aZrtVqzXq8/cXOaH6HV1dU7CPxRQgNgamFh4asLYHqEtra2riHsDv5JziUOLyBmG9jd3b10dHT0HRkncOb3EP6RBOaHyQZE2mazuY2wEv6w0Wg84+C6vqAfWDqOjY2tIM/zjrQ3Z2dnfw7KZ26E1tfXb5+dnX2SwP2kZRBTIyTSIvxbhBwoLQOYaSCvtAxgooEi0jKACYnHx8eXAZFLWgZIPkJFpWWApCPkSoufOMv9rrQcmNfJGigrLQMkaUCkxW3Ca4TJvNJyYF4nkVikRZAXea60HJjX0UeoqrQMEHWERFqMT/v2uKy0DBCtAV/SMkCUBnxKywBRJPYpLQMEHyHf0jJA0BEKIS0DBGsglLQMEKSBkNIyQBCJQ0rLAN5HKLS0DOB1hGJIywDeGoglLQN4aSCmtAzgRWK8EbWEb+zl9pgDZq0rj1BsaRmo0gi50uJ9+5Uyv9NyoKLr0g2kkpYBSzWQUloGKCVxSmkZoPAIpZaWAQqNkAVpSwOItMfHxx8w/w38Qr43Nzf3ir9ZinWuBlRaHCcRvv0nHxxbKQLz/5lLYkvSMkCmxNakZYB/jpBFaXMDuNLiRftWpM0FwNKOjo4+tSItA/SV2LK0DNAjsSst7jDvzs/Pf+EXWVp3SbyxsXEV49N+91huj62HlxPZBYAdUe8A0MDzZqXl9rsAHFG7nucXWVp3BcXYPAZEEwGnO7ukLGXtm6VHYgS/hTH63Pnqe9hgd9D3lUae7GpAMnV+r5V3GeRzO3I1luetPnoa0KBo4j2aeIj1D1zIrs/MzPzRz1k69jSg4WSXFHw4xHpCdk8BZiCsvibFcSCAnHFI3d7qiPD3rUqdeVZdqS1emQc2oOPgSi27qaxJndmAgliVOrMBBbAqdW4Alhp3rXKtSP7IPUKa1JrUuRtQAJEa1wfZLlO3IHXhBhTEitSFG1AAV2rZfZXqSl0awJUaUA9SSV16hLSJ1FKXbkABXKkxRtFvvys3oCCppK7cgAKkktobQCqpvY2QNhFbam8NKEBsqb03oCCxpPbegALEkjoYQCypg42QNhFa6mANKEBoqYM3oCChpA7egAKEkjoaAEuNRl4qXJVjtBHSkL6ljtaAAojU8ucrrOs+br+jN6AgvqSO3oAC+JI6GYAvqZONkDZRVepkDShAVamTAwiIbCTBu317+KnUkF1hstFEAbOOJgAQvqVSA2KyyBtlJgDkLJeVOrnEPCJFpTbTgIIUldocgIB0doft55HaJIBI3dkldpgltUkAaSGv1OYklvDuI2sHmdkGFEJ2jbm337KrTD8nR/MAEtKVGn+XeyPP6eNcAKjUCP0NUv/S8MPj8AwMz8B/cAb+AjHeF/iJK9P7AAAAAElFTkSuQmCC)
+}
+
+.swiper .swiper-button-next {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAABwCAYAAABYWvPrAAAABGdBTUEAALGPC/xhBQAABJFJREFUeAHtnMtqU1EUhptkqpA6bKc6aR/AkSNHWpV6oQMhKPQG+ga2jn2GXqAo1kGxFbTq3JkPUJ/BiTSgs17iv0IW7PxJem77sgo5UHZ20uj6zr++nN1zTjsxMd7Ge2C8By71Hqi51W9ubn7F/Gqj0ZhbXFz8675m9XGdCrvW6XRunZ6evsPYB0ffZ2baB1Cv11u1Wq2N6uaRxrqZKi8oZGAvo/A72PuHvfc8WF1dlbYyu/UlIFWurKx8x7CGL3ltd2dn5wZGs9tAAlopkviIJB5j/mtycvLmwsLCP33N0jiQgBbXbDafw4cjzGfa7bZZqUcCyB6H1PMiNZJ4aFXqkS2kSbhSA+j+8vLyN33NwjgyAS3Olfr8/PyDNakzE1AQq1JnJqAAVqXODcBSb21tybEi+Za7hbRSa1LnTkABRGp8tMo6qW5B6sIJKIgVqQsnoACu1MfHx29TLb9LA7hSA+pRKqlLt5AmkVrq0gkogCs12ij68rtyAgqSSurKCShAKqm9AaSS2lsLaRKxpfaWgALEltp7AgoSS2rvCShALKmDAcSSOlgLaRKhpQ6WgAKEljp4AgoSSurgCShAKKmjAbDUSOSVwlUZo7WQFulb6mgJKIBIjTN8rzGv+1h+R09AQXxJHT0BBfAldTIAX1InayFNoqrUyRJQgKpSJwcQkKWlpTc427ePT6XmycnJp729vSsKmDWaAEDxHZUaELNFTpSZAJC9XFbq5BJzixSV2kwCClJUanMAAiJSYzjII7VJAJEaF9efYTzKktokgKSQV2pzEkvx7obT9ndxJeiLPDfsOrXZBBRCLqy7y+/t7e3r+loXyp1YfexKLdfl3DrNJ+AUO7TWoU86bzLxEAc3uSravfEE7fTULcq8xBsbG3Mo+LMUjY/Ve3KgcwFMJ9C7sWQXBUuda1y8gJhNQJbUWJX+RI0z2PP7KP6JFMybyQRw9K3JXWIoVoo/kqU2F67zhj6wNE5NTclplxcovg1pb7dard+j6jPXQu6Rd5i0DGKqhUTa3oFqpLQMYCaBvNIygIkEikjLACYknp6eXgdELmkZIHkLFZWWAZK2kCstPnHWhx1puWCeJ0ugrLQMkCQBkVZOXqGYzCMtF8zzJBKLtCjkZZ4jLRfM8+gtVFVaBojaQiIt2qe7PC4rLQNES8CXtAwQJQGf0jJAFIl9SssAwVvIt7QMELSFQkjLAMESCCUtAwRJIKS0DBBE4pDSMoD3FgotLQN4baEY0jKAtwRiScsAXhKIKS0DeJEYJ6LkN5q8LI+5wKx55RaKLS0DVWohV1q5DFTmZ1ouqOi8dAKppGXAUgmklJYBSkmcUloGKNxCqaVlgEItZEHa0gAirdxNhf5v4gfy/d61W/73os9zJaDSYpxF8d1LPhg70asd8h/mktiStMyQKbE1aRngwhayKG1uAFdavOnAirS5AFja3t1TJqRlgKESW5aWAQYkdqXFCtPcX/JggD6J5W4otE/37LEsj639GRIuXuZ9AGdnZ+8B0MTzZqVliD4AHF3/4Bt+WJaWAcbz8R4Y74FLvgf+A5z9Dfn09/m0AAAAAElFTkSuQmCC)
+}
+
+.swiper .swiper-button-prev:hover {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAABwCAYAAABYWvPrAAAABGdBTUEAALGPC/xhBQAABONJREFUeAHtnDtPFFEUx1l2Sw2Jn0ELaCEhGiuNhWAAKbSx0QTY3Q9AoqA1n4BnIQYttAAfUT+AiRYEyrXQnqXQsMZKF9b/IXvM3bOvedzHIdlJJufe2d3J/3/P+c1cZm7o6+ttvRHojcCZHoHMWVE/Pz9//ujo6F0mk/m1trY2wbr7uaE51mq1TKVS2YTGq9gvmFqzZkdru1wuL8JEHvoquVzu1u7u7k/Wqr6EZmdnx1E2r0nwycnJxMbGxkcWTzFndrS15+bmLkHTFpUQtgUpnvSqzUCxWDx3fHz8BeIH+/v7t1dXV++0GmCVENOIV6vVTRIP0SUYeNBKPB1TCTFBC20M7Y3l5eVyOwPqSgh1Pwaxb0hwK2ilEVUlVIf2OZUQhC62glYaUJOBqNBKAyoyEAdaaUAFxIeHhwswUYA4utN2hFYaCF5CcaGVBoLeiZNAKw0Ey0BSaKWBIBATtJgmPEXseqeVgmU/CMRpoJUGvJdQWmilAa8QE7Qomy2IoIGLdKeVgmXfWwZsQSsNeIHYJrTSgBeIbUIrDTgvIdvQSgNOIXYBrTTgLAOuoJUGnEDsElppwAnELqGVBqyXkGtopQGrEPuAVhqwlgFf0EoDViD2Ca00YAXig4ODRzhxEXvsv2mloLj91CXkG1ppMBXEJrR4evw4yoMoKSBtP3EGQkErDSeCOCS00kAiiENCKw3ELqHQ0EoDsSDWAK00EDkDBC3emnzGCYbolc/KyspdXHlq8oS++5EgZmhJPPbTVz4axNNgRYJYE7Qk2ty6lpA2aE3x1O4IsUZopYG2GTChRb3v0HtaLXVvmmgJsYQ2m83e1yiejLSEWDO05uhTu6mETGjx+STW5nyQP9LUbygh1P1FlM/p4gqIfKJdPA1kgwG8NXmBYwN1aJfoC9q3BgMQy1MDeVytjwahuNrcg9IKymgyn88vqFVtCGuCeGZm5iYma2/pOzAytb6+/t74vrpm02V0f3//+8jIyB+Ivw4WxtHe3tvb+79GTZuDpgywQJTQKyx3mYaJryity1iz85s/0xQbGDCF1VdJlZCJwfrqqbZmzd/5brc1QCOOhRfTEFTBPqUV6q6jakINI+ruzE0QyxLQDnXXDLAhrVC3ZYCFc9QKdWQDEupCoUBPpINvkUuIlWqDuivELJwjQT08PPwXfRV36tgZYCNaoI7MAAvnaEJdX32VeDD4nEliYgMm1Jhu3A4FdepRCw11bIhlmk2o8dkYpt87PqffqTPAhkJBnZgBFs4xFNTWDISC2loJcSZ8Q50aYhbO0TfU1jPARnxBbY0BFs7RF9TODPiC2lkJcSZcQ20dYhbO0TXUzjPARlxB7YwBFs7RFdTeDEio8SboIZtLE72VEIu0DbVziFk4R4IaU+4q/gi6hmOpp9/eM8BGbEHtjQEWztEW1MEM2II6WAlxJtJC7R1iFs4xLdTBM0BGcEXK4LHMS3qlhW4JL1auUImxyU4xGAOmKFpIwlDj+FCcB2UqDJCZpFCrKCEzG3GhDg6xKZ7acaFWlwEyQVDTnZqeuaLbEWo1DJBw3ghqWiWGfgl7R6hVGiAjUaFWWUJkgLduK8jUQczCOeJJ9zdz+j06Orpt/oMktSXEBihiyecSuNhBcwDrNp6Zn50JAww14ifsP0wDvXZvBHojcMZH4B9UuIxxuC8q3wAAAABJRU5ErkJggg==)
+}
+
+.swiper .swiper-button-next:hover {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAABwCAYAAABYWvPrAAAABGdBTUEAALGPC/xhBQAABOxJREFUeAHtnEtPE1EUx+ljqYH4GXQBW0iIxpXGhRAFWejSaAK0fAMFXRM+AM+FRtjoAnxE/QAmuiCwrAvdAwtNGl1pof4P6TG3p9N2HvdxSDpJc+6dmZb//57z653OHe3r6229EeiNwJkegZypfnZ29l29Xj8/MDBwa2lp6Zd5TGs7bwqD+AvoX61Wq8/RbjJnnqep3WSgWCzeh7gqxE+USqV5TULbaWkZ5enp6Zv5fP4tvQFGJtfX19+3e7OG/QUpYn9///vIyMgfiL+ey+XG0d7e29v7Kc/T0m/JAAtDCb06OTmZgomvhULh8vLy8m8+pik2MWAKQxk9RL+CTAzWajW1ULc1QCMOqKdgoorXpFao25YQZ8OEGvsm1tbWPvAxDbEFYilKO9RdM8CGtELdlgEWzlEr1LENSKjL5fJjNhcyxi4hFqkN6q4Qs3COBPXw8PBf9FXM1IkzwEa0QB2bARbO0YT6+Pj4GWbs1IPBn5kmpjZgQg3xd0JBnXnUQkOdGGKZZhNqHBvD5feOz8vvzBlgQ6GgTs0AC+cYCmprBkJBba2EOBO+oc4MMQvn6Btq6xlgI76gtsYAC+foC2pnBnxB7ayEOBOuobYOMQvn6Bpq5xlgI66gdsYAC+foCmpvBiTUWIt4xOayRG8lxCJtQ+0cYhbOkaDGJXcNP4KuYV/my2/vGWAjtqD2xgAL52gL6mAGbEEdrIQ4E1mh9g4xC+eYFergGSAjdE8Jt2Ve0pIWuhUsrFyhEmOTnWIwBkxRWIerM9TYP5TkRpkKA2QmLdQqSsjMRlKog0Nsiqd2UqjVZYBMENQ0U9M9V3Q7Qq2GARLOG0GNxfUH6Ffw6gi1SgNkJC7UKkuIDPCG3w1jaL9p9FvWqdVBzMI54k73N/Pye3R0dHt3d/f/wydqS4gNUFxdXV0EFzto9mOS2zKPnQkDDcGRWtWXEIk/PDxcwFdqCc0qrpPGzBJSD/HMzMw4yuc1GcHF3u2NjY2P1OatyA2NEd9Al6BrkyY2bPNSPGlWm4G5ublzAPYLxA/iSnUbIN+NGuRIMKJO9LmPRrzxlNgg/m6lcakdKUElxAQt1DK0NzArH0aqx051JWTOvFHQSiOqSqgB7RaVEIQuREErDajJQFxopQEVGUgCrTSgAuKjo6N5mChDHM20HaGVBoKXUFJopYGgM3EaaKWBYBlIC600EARigrZx86rrTCsFy34QiLNAKw14L6Gs0EoDXiEmaFE+mxBBAxdrppWCZd9bBmxBKw14gdgmtNKAF4htQisNOC8h29BKA04hdgGtNOAsA66glQacQOwSWmnACcQuoZUGrJeQa2ilAasQ+4BWGrCWAV/QSgNWIPYJrTRgBeKDgwP6F01zeCX+TSsFJe1nLiHf0EqDmSA2ocXd4ydxbkRJAVn7qTMQClppOBXEIaGVBlJBHBJaaSBxCYWGVhpIBLEGaKWB2BkgaLFq8hkfMERLPisrK/fwzVOXH+i7HwtihpbE43W65KNBPA1WLIg1QUuiza1rCWmD1hRP7Y4Qa4RWGmibARNa1PsOrdNqqXvTRCTEElp6ekqjeDISCbFmaM3Rp3ZLCZnQ4njLE1LyA0L3m0oIdX8R5XP6cAWEPdX235BEDVaTAayavMBJ/Q1oF6PeoG1fkwGI+wHxnzRDq20Ae3p6I9AbgYwj8A/u245zJxjuWAAAAABJRU5ErkJggg==)
+}
+
+.programBox {
+	width: 100%;
+	padding: 100px 0;
+	background-color: #f6f6f6
+}
+
+.programList {
+	width: 1080px;
+	margin: 0 auto
+}
+
+.programList .top li {
+	margin-right: 40px;
+	font-size: 24px;
+	line-height: 60px;
+	color: #666;
+	font-weight: lighter;
+	cursor: pointer
+}
+
+.programList .top li.active {
+	border-bottom: 2px solid #5cb975;
+	font-size: 32px;
+	line-height: 56px;
+	color: #333
+}
+
+.programList .top .more {
+	width: 110px;
+	height: 50px;
+	margin-top: 10px;
+	font-size: 14px;
+	line-height: 50px;
+	color: #666;
+	text-align: center;
+	background-size: 12px 16px;
+	background-repeat: no-repeat;
+	background-position: 86px 17px;
+	background-image: url('http://images.kaishiba.com/20170913arrow1.png')
+}
+
+.programList .cardList {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-top: 20px
+}
+
+.unloadbg {
+	background-image: url('http://images.kaishiba.com/20170920defaultbg2.png');
+	background-size: 100% 100%
+}
+
+.cardBox {
+	width: 100%;
+	height: 100%
+}
+
+.programCard {
+	width: 340px;
+	height: 480px;
+	margin-top: 30px;
+	line-height: 0;
+}
+
+.card-container {
+	-webkit-transition: all .25s ease-out .2s;
+	transition: all .25s ease-out .2s
+}
+
+.card-container:hover {
+	-webkit-transform: translateY(-6px);
+	transform: translateY(-6px);
+	box-shadow: 0 0 20px 0 rgba(51, 51, 51, .2)
+}
+
+.card-container>a {
+	display: block
+}
+
+.programCard .cardBg {
+	width: 100%;
+	height: 220px;
+	-o-object-fit: cover;
+	object-fit: cover
+}
+
+.programCard .cardContent {
+	box-sizing: border-box;
+	height: 240px;
+	padding: 30px 26px 40px;
+	background-color: #fff;
+	-webkit-transform: translateZ(0)
+}
+
+.programCard .title {
+	display: block;
+	height: 44px;
+	font-size: 16px;
+	line-height: 22px;
+	color: #333;
+	letter-spacing: 1.5px;
+	font-family: PingFangSC-Regular
+}
+
+.programCard .desc {
+	display: block;
+	height: 36px;
+	margin-top: 10px;
+	font-size: 12px;
+	line-height: 18px;
+	color: #999;
+	letter-spacing: 1px;
+	text-align: justify
+}
+
+.programCard .desc,
+.programCard .detail {
+	font-family: PingFangSC-Light;
+	font-weight: lighter
+}
+
+.programCard .detail {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	width: 100%;
+	height: 20px;
+	margin-top: 18px;
+	color: #666
+}
+
+.programCard .avatar {
+	width: 20px;
+	height: 20px;
+	margin-right: 8px;
+	border-radius: 10px
+}
+
+.programCard .author {
+	font-size: 12px;
+	line-height: 20px;
+	letter-spacing: 1.2px
+}
+
+.programCard .locate,
+.programCard .tag {
+	font-size: 12px;
+	line-height: 20px;
+	letter-spacing: 1px;
+	background-position: 0;
+	background-repeat: no-repeat
+}
+
+.programCard .locate {
+	padding-left: 14px;
+	background-image: url('http://images.kaishiba.com/20170809icon_locate@4x.png');
+	background-size: 8px 10px
+}
+
+.programCard .tag {
+	padding-left: 16px;
+	background-image: url('http://images.kaishiba.com/20170905icon_tag.png');
+	background-size: 10px 10px
+}
+
+.programCard .progressContainer {
+	width: 100%;
+	height: 4px;
+	border-radius: 2px;
+	margin-top: 12px;
+	overflow: hidden
+}
+
+.programCard progress {
+	width: 100%;
+	height: 100%;
+	color: #5cb975;
+	background-color: #f5f5f5;
+	border-radius: 10px;
+	float: left
+}
+
+progress::-webkit-progress-bar {
+	color: #f5f5f5;
+	background: #f5f5f5
+}
+
+progress::-webkit-progress-value {
+	color: #5cb975;
+	background: #5cb975
+}
+
+progress::-moz-progress-bar {
+	color: #f5f5f5;
+	background: #f5f5f5
+}
+
+progress::-moz-progress-value {
+	color: #5cb975;
+	background: #5cb975
+}
+
+progress::-o-progress-bar {
+	color: #f5f5f5;
+	background: #f5f5f5
+}
+
+progress::-o-progress-value {
+	color: #5cb975;
+	background: #5cb975
+}
+
+.programCard nav {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	margin-top: 12px;
+	font-size: 12px;
+	line-height: 12px;
+	color: #5cb975;
+	font-family: PingFangSC-Light;
+	font-weight: lighter
+}
+
+.programCard nav p {
+	-webkit-transform: scale(.8);
+	transform: scale(.8)
+}
+
+.programCard nav p:first-child {
+	margin-left: -6px
+}
+
+.programCard nav p:last-child {
+	margin-right: -7px
+}
+
+.programCard nav .num {
+	font-family: PingFangSC-Medium;
+	font-size: 14px;
+	line-height: 14px;
+	letter-spacing: .6px;
+	font-weight: 400
+}
+
+.index-header-wrap img[_v-4eab2b0c] {
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	vertical-align: middle;
+	cursor: pointer
+}
+
+.index-header-wrap span[_v-4eab2b0c] {
+	font-family: PingFangSC-Light;
+	font-size: 14px;
+	color: #666;
+	line-height: 60px;
+	cursor: pointer
+}
+
+.user-logined-wrap[_v-4eab2b0c] {
+	position: relative;
+	height: 60px
+}
+
+.nav-user-list[_v-4eab2b0c] {
+	position: absolute;
+	top: 100%;
+	right: -10px;
+	z-index: 11;
+	border: 1px solid #e1e1e1
+}
+
+.nav-user-list li[_v-4eab2b0c] {
+	width: 160px;
+	height: 60px;
+	line-height: 60px;
+	list-style: none;
+	background-color: #fff;
+	border-bottom: 1px solid #e1e1e1
+}
+
+.nav-user-list li a[_v-4eab2b0c] {
+	position: relative;
+	width: 100%;
+	height: 60px;
+	color: #666;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	cursor: pointer
+}
+
+.nav-user-list li a i[_v-4eab2b0c] {
+	position: absolute;
+	font-size: 14px;
+	left: 20px;
+	top: 23px
+}
+
+.nav-user-list li a .left[_v-4eab2b0c] {
+	margin-left: 20px
+}
+
+.nav-user-list li a .left img[_v-4eab2b0c] {
+	width: 20px;
+	margin-right: 14px
+}
+
+.nav-user-list li a .right[_v-4eab2b0c] {
+	margin-right: 16px
+}
+
+.nav-user-list li a .right img[_v-4eab2b0c] {
+	width: 6px;
+	height: 10px
+}
+
+.nav-user-list li[_v-4eab2b0c]:hover {
+	background-color: #e1e1e1
+}
+
+.slideDown-enter[_v-4eab2b0c] {
+	-webkit-animation: slide-in .3s;
+	animation: slide-in .3s
+}
+
+.slideDown-leave[_v-4eab2b0c] {
+	-webkit-animation: slide-out .3s;
+	animation: slide-out .3s
+}
+
+.nav-user-list[_v-4eab2b0c] {
+	overflow-y: hidden
+}
+
+@-webkit-keyframes slide-in {
+	0% {
+		height: 0
+	}
+	to {
+		height: 302px
+	}
+}
+
+@keyframes slide-in {
+	0% {
+		height: 0
+	}
+	to {
+		height: 302px
+	}
+}
+
+@-webkit-keyframes slide-out {
+	0% {
+		height: 302px
+	}
+	to {
+		height: 0
+	}
+}
+
+@keyframes slide-out {
+	0% {
+		height: 302px
+	}
+	to {
+		height: 0
+	}
+}
