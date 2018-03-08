@@ -39,78 +39,23 @@
             </div>
           </TabPane>
           <TabPane label="评价" icon="chatbubble-working">
-            <div class="c54">
-              <div id="review_list">
-                <dl id="review_57956">
-                  <dd class="c207 user-info-left"><a href="http://www.demohour.com/1626624" class=""><img src=""><i></i></a><div class="user-info">
-                    <div class="c65">
-                      <dl>
-                        <dd class="c68"><a href="http://www.demohour.com/1626624" class=""><img src=""><i></i></a></dd>
-                        <dt><a href="http://www.demohour.com/1626624" class="c6811">虎牙</a><a href="http://www.demohour.com/messages/history?recipient_id=1626624" class="action-popup-login action-popup-verify message"></a></dt>
-                        <dd>西城<br>2016年08月15日 加入点名时间</dd>
-                      </dl>
-                      <p>简介：TA很懒，还没有写简介。</p>
-                      <div class="c6511">
-                        <span class="action-follow followed_1626624" data-action-target="1626624"><a class="c651 c655" href="http://www.demohour.com/users/1626624/follow" data-remote="true">已关注<strong>取消关注</strong></a></span>
-                        <span class="action-follow followed_each_1626624" data-action-target="1626624"><a class="c651 c654" href="http://www.demohour.com/users/1626624/follow" data-remote="true">相互关注<strong>取消关注</strong></a></span>
-                        <span class="action-follow follow_1626624" data-action-target="1626624"><a href="http://www.demohour.com/users/1626624/follow" class="action-popup-login c651 c652" data-remote="true">+ 加关注</a></span>
-                      </div>
-                    </div>
-                    <div class="c76">
-                      <a href="http://www.demohour.com/1626624">动态 1</a> |
-                      <a href="http://www.demohour.com/users/1626624/followed">关注 2</a> |
-                      <a href="http://www.demohour.com/users/1626624/followers">粉丝 0</a>
-                    </div>
-                  </div>
-                  </dd>
-                  <dt><a href="http://www.demohour.com/1626624" class="c205">虎牙</a></dt>
-                  <dt>
-                  <ul data-review-score="5.0">
-                    <li data-review-star="1" class="star star-y"></li>
-                    <li data-review-star="2" class="star star-y"></li>
-                    <li data-review-star="3" class="star star-y"></li>
-                    <li data-review-star="4" class="star star-y"></li>
-                    <li data-review-star="5" class="star star-y"></li>
-                  </ul>
-                  <p><span>创新 5</span><span>设计5</span><span>实用 5</span></p>
-                  </dt>
-                  <dd class="c59">参与并支持
-
-                    <div>
-                    </div>
-                  </dd>
-                  <dd class="c61">
-                    <p><a href="http://www.demohour.com/reviews/57956"><span data-timestamp="2017-09-22 19:59:16 +0800">5个月前</span></a><a id="review_57956_spam" href="http://www.demohour.com/tickets/new?review_id=57956&amp;tag=%E6%8A%95%E8%AF%89%E7%BB%B4%E6%9D%83+-+%E8%AF%84%E4%BB%B7%E4%B8%BE%E6%8A%A5"> • 举报</a></p>
-                    <div class="c62">
-<span class="review-editable hide">
-<a class="action-popup-confirm c2071" href="http://www.demohour.com/reviews/57956?project_id=369441" data-action-method="delete" data-action-remote="true" title="确定删除？">删除</a>
-</span>
-                      <span class="review-editable hide">
-<a class="c2071" id="recommend_review_57956" href="http://www.demohour.com/reviews/57956/recommend?project_id=369441" data-remote="true">推荐</a>
-</span>
-                      <a class="c2071 action-popup-login" id="like_review_57956" href="http://www.demohour.com/reviews/57956/like?project_id=369441" data-remote="true"><strong>1</strong>赞</a><a href="http://www.demohour.com/projects/369441/reviews#comment" class="action-popup-login action-comment-new" data-action-target="57956"> • 评论</a></div>
-                  </dd>
-                  <dd id="review_57956_comment" class="c63">
-                    <img src="" class="c68">
-                    <div id="review_57956_like" class="c64">
-                      <img src="">
-                      <a target="_blank" href="http://www.demohour.com/1627121">少时</a>
-
-                    </div>
-                    <div id="review_57956_comment_list" class="c65 hide">
-                    </div>
-                    <form class="c67 hide" id="review_57956_new_comment" action="http://www.demohour.com/comments?page=1&amp;review_id=57956&amp;total_pages=2&amp;total_results=5" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
-                      <input type="hidden" name="comment[comment_id]" id="review_57956_comment_comment_id">
-                      <input type="hidden" name="comment[comment_user_id]" id="review_57956_comment_comment_user_id">
-                      <textarea name="comment[content_1]" id="review_57956_comment_content_1" class="textarea" placeholder="我要评论"></textarea>
-                      <div class="button button-green button-ajax"><button type="submit">发送</button></div>
-                    </form>
-                  </dd>
-                  <dd class="cl"></dd>
-                </dl>
-
-              </div>
-
+            <div>
+            <Input v-model="comment" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请先登录后再发表..."></Input>
+            <Button type="success" size="large">发表</Button>
+            </div>
+            <div class="commemtlist ">
+              <dl>
+                <dt>
+                  <img src="../../../static/image/header2.jpg">
+                  <span class="username ">用户名</span>
+                </dt>
+                <dd class="commentwords "><i class="icon-style icon-file-alt ">评论内容</i></dd>
+                <dd class="btbar ">
+                  <span class="like red "><i class="icon-style icon-thumbs-up "></i>点赞(<strong @click="like(index) ">点赞</strong>)</span>
+                  <span class="notlike red "><i class="icon-style icon-thumbs-down "></i>回复(<strong @click="notlike(index) ">点踩</strong>)</span>
+                  <span class="data red "><i class="icon-style icon-calendar "></i>时间<strong>时间</strong></span>
+                </dd>
+              </dl>
             </div>
           </TabPane>
           <TabPane label="支持" icon="thumbsup">标签四的内容</TabPane>
@@ -164,7 +109,8 @@ export default {
 data(){
     return{
        event:'',
-	     id:''
+	     id:'',
+      comment:''
     }
 },
   mounted: function() {
@@ -474,5 +420,75 @@ components:{
   .c64{
     float: right;
     margin-right:15px;
+  }
+  /*评论框*/
+ .commemtlist {
+    padding: 10px;
+  }
+
+ .commemtlist dl {
+    padding: 20px 0;
+    border-bottom: 1px solid #D2D2D2;
+  }
+
+ .commemtlist dl dt {
+    float: left;
+    text-align: center;
+    margin-right: 15px;
+  }
+
+ .commemtlist dl dt img {
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+  }
+
+ .commemtlist dl dd {
+    padding-bottom: 10px;
+  }
+
+ .commemtlist .btbar span {
+    margin-right: 15px;
+    font-size: 10px;
+  }
+
+ .commemtlist .btbar .red strong {
+    color: red;
+    margin: 0 3px;
+    font-weight: normal;
+    cursor: pointer;
+  }
+
+ .commemtlist .username {
+    display: block;
+    font-size: 12px;
+    text-align: center;
+  }
+
+ .commemtlist .wordsbox textarea {
+    height: 100px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    resize: none;
+  }
+
+ .commemtlist .wordsbox span {
+    font-size: 13px;
+    margin-right: 15px;
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+  }
+
+ .commemtlist .wordsbox input {
+    float: right;
+    width: 80px;
+    height: 28px;
+    text-align: center;
+    color: #fff;
+    background: red;
+    border: none;
+    border-radius: 3px;
   }
 </style>
