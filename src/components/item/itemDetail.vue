@@ -24,7 +24,7 @@
 						<div class="card-container">
 							<a target="_blank" href="https://www.kaishiba.com/project/detail/id/609202847F67E378E050190AFD017FDB"><img class="cardBg" v-lazy="'/static/image/'+item.photoname"></a>
 							<div class="cardContent">
-								<div class="cardBox"> <a class="title" target="_blank" href="https://www.kaishiba.com/project/detail/id/609202847F67E378E050190AFD017FDB">{{item.title}}</a> 
+								<div class="cardBox"> <a class="title" target="_blank" href="https://www.kaishiba.com/project/detail/id/609202847F67E378E050190AFD017FDB">{{item.title}}</a>
 								<a class="desc" target="_blank" href="https://www.kaishiba.com/project/detail/id/609202847F67E378E050190AFD017FDB">{{item.instruction}}</a>
 									<div class="detail">
 										<div> <img class="avatar fl" v-lazy="'/static/image/'+item.user.headPhoto"> <span class="author">{{item.user.nikeName}}</span> </div> <span class="locate">{{item.province}}</span> <span class="tag">{{item.eventType.typecontent}}</span> </div>
@@ -40,11 +40,11 @@
 						</div>
 					</li>
 				</ul>
-					<Page :total="60" :pageSize="6" :current="1" @on-change="handleClick"></Page>
+					<Page :total=this.total :pageSize="6" :current="1" @on-change="handleClick"></Page>
         </div>
-        
+
   </div>
-    
+
 </template>
 <script>
 import NavHeader from "../../views/home/NavHeader.vue";
@@ -87,6 +87,7 @@ export default {
         })
         .then(result => {
           let res = result.data;
+          console.log(res);
           this.total=res.total;
           this.eventListBySearch = res.list;
         });

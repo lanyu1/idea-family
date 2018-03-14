@@ -48,7 +48,7 @@
     </Upload>
     <Modal title="View Image" v-model="visible">
         <img :src="'http://localhost:8089/' + imgName " v-if="visible" style="width: 100%">
-    </Modal> 
+    </Modal>
         </FormItem>
         <FormItem label="项目名称" prop="title">
             <Input v-model="formValidate.title" placeholder="请输入项目名称"></Input>
@@ -65,15 +65,17 @@
         </FormItem>
     </Form>
     </div>
-</div> 
+</div>
 </template>
 <script>
+import { setCookie,getCookie,delCookie } from '../../assets/js/cookie.js'
 import NavHeader from "../../views/home/NavHeader.vue";
 import axios from "axios";
 export default {
    data () {
             return {
                 formValidate: {
+                    founderid:null,
                     title: '',
                     type:'',
                     province:'',
@@ -83,6 +85,8 @@ export default {
                     createtime: '',
                     instruction: ''
                 },
+                email:'',
+                user:'',
                 imgName: '',
                 visible: false,
                 uploadList: [],
@@ -216,6 +220,8 @@ export default {
                         console.log(this.$refs[name].model);
                         this.formValidate.city=this.$refs[name].model.data[0];
                         this.formValidate.province=this.$refs[name].model.data[1];
+                        this.formValidate.founderid=this.user.id;
+                        console.log(this.formValidate);
                         this.createEvent(this.formValidate);
                         this.$Message.success('创建成功!');
                         this.formValidate='';
@@ -229,10 +235,30 @@ export default {
             },
             handleReset (name) {
                 this.$refs[name].resetFields();
-            }
+            },
+      getUserByEmail() {
+        var param = {
+          email:this.email
+        };
+        axios.get("http://localhost:8080/user/getUserByEmail",{
+          params:param
+        }).then(result => {
+          let res = result.data;
+          this.user = res;
+          console.log(res);
+        });
+      },
     },
     mounted () {
             this.uploadList = this.$refs.upload.fileList;
+
+      /*页面挂载获取保存的cookie值，渲染到页面上*/
+      let uemail = getCookie('email');
+      this.email = uemail;
+      /*如果cookie存在，则跳转到登录页*/
+      if(uemail!=""){
+        this.getUserByEmail();
+      }
         },
     components:{
         NavHeader
@@ -255,7 +281,7 @@ img{
 }
 .ivu-radio-group-item{
     margin-right:50px;
-} 
+}
 .ivu-btn-primary{
     margin-left:50px;
 }

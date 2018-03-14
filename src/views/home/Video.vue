@@ -2,12 +2,38 @@
   	<div class="topbg"> <img class="bg" src="../../../static/image/index_video_bg.png">
 		<video id="bgvideo" class="masthead-video" autoplay="" loop="" muted="">
 			<source src="http://video.kaishiba.com/indexbackground.mp4?201712" type="video/mp4"> </video>
-		<div class="btn-start-project-wrap specialhide"> <router-link to="/createEvent" class="btn-start-project">发起项目<span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAeCAYAAAA2Lt7lAAAABGdBTUEAALGPC/xhBQAAAPhJREFUSA3tlSEKAkEUhncXi1hcDYLRoMFiEYPdYvMEm7yB0eQRjN7BTR5BkxfQYBQEkwiCyo7fkwmLsKZ5aNgHH2/Zge8fZmdmPS+vv10BY0wbyioTRFyBBI7Q0QqZIZe6wEArZIz8CXeItEKGyK8gNdUK6SI/vSOMWdALzoOQNmBvQ1b0kkZIFfHGhmzpNY2QIuLYhhzoLY2QAPHchpzpzayQIGvg23vf9xPG1yA9hDq4K2Y8ATnpNxg5MyP7XJq+S7l83CVIuf24CPW2J3I5YDuQcnvAEOpdEcj1LjnkIcgV/YDI2U5JixDLv6CXfpc/5yvwmxV4AUtyJlLhI7PFAAAAAElFTkSuQmCC"></span></router-link>				</div>
+		<div class="btn-start-project-wrap specialhide"> <a  class="btn-start-project" @click="createEvent">发起项目<span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAeCAYAAAA2Lt7lAAAABGdBTUEAALGPC/xhBQAAAPhJREFUSA3tlSEKAkEUhncXi1hcDYLRoMFiEYPdYvMEm7yB0eQRjN7BTR5BkxfQYBQEkwiCyo7fkwmLsKZ5aNgHH2/Zge8fZmdmPS+vv10BY0wbyioTRFyBBI7Q0QqZIZe6wEArZIz8CXeItEKGyK8gNdUK6SI/vSOMWdALzoOQNmBvQ1b0kkZIFfHGhmzpNY2QIuLYhhzoLY2QAPHchpzpzayQIGvg23vf9xPG1yA9hDq4K2Y8ATnpNxg5MyP7XJq+S7l83CVIuf24CPW2J3I5YDuQcnvAEOpdEcj1LjnkIcgV/YDI2U5JixDLv6CXfpc/5yvwmxV4AUtyJlLhI7PFAAAAAElFTkSuQmCC"></span></a>				</div>
 	</div>
 </template>
 <script>
+  import { setCookie,getCookie,delCookie } from '../../assets/js/cookie.js'
 export default {
-  
+    data(){
+        return{
+
+        }
+    },
+  methods:{
+    createEvent(){
+      /*页面挂载获取保存的cookie值，渲染到页面上*/
+      let uemail = getCookie('email');
+      /*如果cookie不存在，则跳转到登录页*/
+      if(uemail==""){
+        this.$Message.success('请先登录后再创建!');
+        this.$router.push({
+          path:'/login'
+        });
+      }else{
+        this.$router.push({
+          path:'/createEvent'
+        });
+      }
+    }
+  },
+  mounted(){
+
+  },
+
 }
 </script>
 <style scoped>

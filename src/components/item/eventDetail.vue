@@ -8,7 +8,7 @@
          <div class="c40">{{event.title}}</div>
          <div class="c42">
            <a href="http://www.demohour.com/search?q=%E7%B2%BE%E5%87%86%E6%89%B6%E8%B4%AB&amp;t=projects&amp;c=tags_collection">加入小组</a>
-           <a href="http://www.demohour.com/search?q=%E5%87%BA%E7%89%88&amp;t=projects&amp;c=tags_collection">{{event.eventType.typecontent}}</a>
+           <a href="http://www.demohour.com/search?q=%E5%87%BA%E7%89%88&amp;t=projects&amp;c=tags_collection">{{eventType.typecontent}}</a>
          </div>
          <div class="c44">
            {{event.instruction}}
@@ -41,22 +41,23 @@
           <TabPane label="评价" icon="chatbubble-working">
             <div>
             <Input v-model="comment" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请先登录后再发表..."></Input>
-            <Button type="success" size="large">发表</Button>
+            <Button type="success" size="large" @click="submit()">发表</Button>
             </div>
             <div class="commemtlist ">
-              <dl>
+              <dl v-for="(item,index) in commentList" :key="index">
                 <dt>
                   <img src="../../../static/image/header2.jpg">
-                  <span class="username ">用户名</span>
+                  <span class="username ">{{item.user.nikeName}}</span>
                 </dt>
-                <dd class="commentwords "><i class="icon-style icon-file-alt ">评论内容</i></dd>
+                <dd class="commentwords "><i class="icon-style icon-file-alt ">{{item.content}}</i></dd>
                 <dd class="btbar ">
                   <span class="like red "><i class="icon-style icon-thumbs-up "></i>点赞(<strong @click="like(index) ">点赞</strong>)</span>
-                  <span class="notlike red "><i class="icon-style icon-thumbs-down "></i>回复(<strong @click="notlike(index) ">点踩</strong>)</span>
-                  <span class="data red "><i class="icon-style icon-calendar "></i>时间<strong>时间</strong></span>
+                  <span class="notlike red "><i class="icon-style icon-thumbs-down "></i>回复(<strong @click="notlike(index) ">回复</strong>)</span>
+                  <span class="data red "><i class="icon-style icon-calendar "></i>时间<strong>{{item.commenttime}}</strong></span>
                 </dd>
               </dl>
             </div>
+            <Page :total=this.total :pageSize="4" :current="1" @on-change="handleClick" show-elevator></Page>
           </TabPane>
           <TabPane label="支持" icon="thumbsup">标签四的内容</TabPane>
         </Tabs>
@@ -84,9 +85,9 @@
     </div>
       <d1 class="project-initiator">
         <dd class="c8">
-          <a href="http://www.demohour.com/1633633" target="_blank" class="v3"><img v-lazy="'/static/image/'+event.user.headPhoto"><i></i></a>
+          <a href="http://www.demohour.com/1633633" target="_blank" class="v3"><img v-lazy="'/static/image/'+infoUser.headPhoto"><i></i></a>
         </dd>
-        <dt><a href="http://www.demohour.com/1633633">{{event.user.nikeName}}</a>
+        <dt><a href="http://www.demohour.com/1633633">{{infoUser.nikeName}}</a>
         </dt>
         <dd class="c9">
           <a title="私信给 91悦读会" href="http://www.demohour.com/messages?recipient_id=1633633" class="action-popup-login action-popup-verify action-popup-message message">发私信</a>
@@ -103,20 +104,72 @@
 </div>
 </template>
 <script>
+import { setCookie,getCookie,delCookie } from '../../assets/js/cookie.js'
 import NavHeader from "../../views/home/NavHeader.vue";
 import axios from 'axios'
 export default {
 data(){
     return{
+       email:'',
        event:'',
 	     id:'',
-      comment:''
+       infoUser:'',
+       loginUser:'',
+       eventType:'',
+       comment:'',
+       commentList:[],
+       nowDate:'',
+       current: 1,
+       pageSize: 3,
+       total:null,
     }
 },
   mounted: function() {
     this.eventById();
+    this.commentLists();
+    /*页面挂载获取保存的cookie值，渲染到页面上*/
+    let uemail = getCookie('email');
+    this.email = uemail;
+    /*如果cookie存在，则跳转到登录页*/
+    if(uemail!=""){
+      this.showLogin=true;
+      this.getUserByEmail();
+    }
   },
 methods:{
+  handleClick(val){
+    this.current=val;
+    this.commentLists();
+  },
+  getUserByEmail() {
+    var param = {
+      email:this.email,
+    };
+    axios.get("http://localhost:8080/user/getUserByEmail",{
+      params:param
+    }).then(result => {
+      let res = result.data;
+      console.log(res);
+      this.loginUser = res;
+    });
+  },
+  submit(){
+      console.log(111);
+      this.nowDate = new Date();
+    axios.post('http://localhost:8080/comment/addComment',{
+      eventid:this.$route.params.id,
+      commentid:this.loginUser.id,
+      content:this.comment,
+      commenttime:this.nowDate
+    },{
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8'
+      }
+    }).then((res)=>{
+        this.comment='',
+        this.commentLists();
+    })
+  },
 	eventById(){
 		var param={
           id:this.$route.params.id
@@ -124,10 +177,27 @@ methods:{
 	this.$axios.get('http://localhost:8080/event/getEvent',{
 		params:param
 	}).then(res=>{
-		 console.log(res.data);
+         console.log(res.data);
          this.event=res.data;
+         this.infoUser = res.data.user;
+         this.eventType = res.data.eventType;
+
 	});
-	}
+	},
+  commentLists(){
+	    var param={
+        page: this.current,
+        pageSize: this.pageSize
+        };
+    this.$axios.get("http://localhost:8080/comment/getComments",{
+        params:param
+    }).then(result => {
+      let res = result.data;
+      console.log(res);
+      this.total=res.total;
+      this.commentList = res.list;
+    });
+  },
 },
 components:{
   NavHeader

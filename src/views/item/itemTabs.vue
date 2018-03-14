@@ -23,7 +23,7 @@
             </div>
 					</li>
         </ul>
-        <Page :total="60" :pageSize="6" :current="1" @on-change="handleClick"></Page>
+          <Page :total=this.total :pageSize="6" :current="1" @on-change="handleClick" show-elevator></Page>
         </TabPane>
         <TabPane label="民宿" icon="social-windows">
         <div>
@@ -48,7 +48,7 @@
             </div>
 					</li>
 				</ul>
-				<Page :total="60" :pageSize="6" :current="1" @on-change="handleClick"></Page>
+          <Page :total=this.total1 :pageSize="6" :current="1" @on-change="handleClick" show-elevator></Page>
         </div>
         </TabPane>
         <TabPane label="餐饮" icon="social-tux">
@@ -74,7 +74,7 @@
             </div>
 					</li>
 				</ul>
-					<Page :total="60" :pageSize="6" :current="1" @on-change="handleClick"></Page>
+         <Page :total=this.total1 :pageSize="6" :current="1" @on-change="handleClick" show-elevator></Page>
         </div>
         </TabPane>
         <TabPane label="农业" icon="social-tux">
@@ -100,7 +100,7 @@
             </div>
            </li>
 				</ul>
-					<Page :total="60" :pageSize="6" :current="1" @on-change="handleClick"></Page>
+           <Page :total=this.total1 :pageSize="6" :current="1" @on-change="handleClick" show-elevator></Page>
         </div>
         </TabPane>
         <TabPane label="休闲" icon="social-tux">
@@ -126,7 +126,7 @@
             </div>
 					</li>
 				</ul>
-					<Page :total="60" :pageSize="6" :current="1" @on-change="handleClick"></Page>
+            <Page :total=this.total1 :pageSize="6" :current="1" @on-change="handleClick" show-elevator></Page>
         </div>
         </TabPane>
     </Tabs>
@@ -141,6 +141,8 @@ export default {
       eventListByType:[],
       current: 1,
       pageSize: 6,
+      total:null,
+      total1:null,
       type:''
     };
   },
@@ -169,6 +171,7 @@ export default {
         })
         .then(result => {
           let res = result.data;
+          this.total=res.total;
           this.eventListByTime = res.list;
         });
     },
@@ -184,6 +187,7 @@ export default {
         })
         .then(result => {
           let res = result.data;
+          this.total1=res.total;
           this.eventListByType = res.list;
         });
     }

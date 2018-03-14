@@ -12,7 +12,7 @@
         </div>
 		<div class="right">
 			<router-link to="/itemDetail" title="搜索项目" class=""><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAA/lJREFUWAntl8tL1FEUx53xlailEWQSI1jYplY6imk5FUgUPTaVtKiFi6A/oEWrIoJWQYtqEbiMkhZm9trUQKL4grJVaAuxUUTLIsXxNdPnTHN/XMf5/e5vJiyCuXDnnN8953zv9577nKysTMlkIJOB/zsDnnToNzQ0lIfD4VPEHqPuopZTo9QJj8czQn3u9Xo7+/r6pmj7o5ISQb/fXxaNRq/RYysyx9DzMvb71BtDQ0MzBl9bs2uC1dXVx8nMQ4htToIWoU2w1uER841snunv73+TJM7Y5DV64EDmLiM6NXIynR10fp7OfcXFxfl8S62g7QL1BXqsELM1Eom8ZoAXVVsqct2IE4Mlc7R1UtVghrOzs1vJyGCir/7NoPZDro26J96+DPHmwcHBoO5n0h0JxtfcJ5U5OnhZVFR0NhgMzpmAxR4IBErm5uY6iG+K+88UFBRUdXd3z7qJFx+VlaT+AF9T5HAYToWcADKQ78ScRh2Rb8q2hYWFq79Vd7+2GZSjZHFxcQyCslujOTk5fo6NIXewa71qamoC4LyVVmYhDOkdQn6tV/Iv2wxyzp2Mk5PIp+mSk+D4uovtYjA3zc/Py7p2VWwJEm2BMOp2V2gOTuz2x8oMSQtbtdlJJ4JyQ8QKu/ad0tOVCRgWtgnPiaBcX1IiPp9v8rea/i9ZC2nRCltrSq46EZTDOFamp6dtN5PyMcmVlRUdw8I2xTkRVFnzcjSUmYBM9tzcXCtrZHPC5K/stgTZGKPKidEfVHq6MgHjs1scW4IAPFcgkD2n9HQlWdMxLGwTni1BADshtiIA6Ce49vwmMDt7bW3tYWyHxA5mmMeF9Ziwi1HttgR5w01C7EHc0YPexu1SrALdyvr6+q2rq6sKRwjecXuLSB+2BMXI9XYd8UN0CO7ldnmSCsnGxsbSpaWlD4RXCgbkvhYWFt4S3W1xJChPdm6AFoBX44DN3M+9PMHqTB0wrQfY/QP47VS+DDJC/Db17UbqZ5OtP5f9JYx36SBbc+qCeDtZfldaWjoJGQ93rBwlTTxQW5DNmq+uhvLy8gK9vb3WKaEbE3VXBCWIPXKUjh+hbkkEcfpmULMMRPopUX58fqE9wDo3HjeOU6wARQ4MDLzKz8+vQr1HB7HdrduT6Iv43SZmNzY5R60/TpDbiS3IUjHeya4zqBOoq6vbTjblOXacWkln5Ui5vuRv5yi1C/sz/d8cZPZhlyeXtQbxM2YyLYI62VR0O5Ksycaenp6xZFiupzhZcKptZPQjm+oIcWumm5190w7rrxIUEhxdw4kkmWp1jK3jqR8b64wb1RAKhaYqKiq6WLY+yL1nI10ZHx//uVH9ZXAzGchk4F9m4BcuV31unAeqlQAAAABJRU5ErkJggg=="
-				class="icon-search"></router-link> <router-link to="/createEvent" class="link-search">发起项目</router-link>
+				class="icon-search"></router-link> <a class="link-search" @click="createEvent">发起项目</a>
 		<div style="min-width:60px">
 			<div id="userLogin" style="">
 				<div class="user-logined-wrap" id="userLogin" href="javascript:;" >
@@ -63,6 +63,21 @@ export default {
        }
  },
  methods:{
+   createEvent(){
+     /*页面挂载获取保存的cookie值，渲染到页面上*/
+     let uemail = getCookie('email');
+     /*如果cookie不存在，则跳转到登录页*/
+     if(uemail==""){
+       this.$Message.success('请先登录后再创建!');
+       this.$router.push({
+         path:'/login'
+       });
+     }else{
+       this.$router.push({
+         path:'/createEvent'
+       });
+     }
+   },
    getUserByEmail() {
      var param = {
        email:this.email
@@ -72,7 +87,6 @@ export default {
      }).then(result => {
        let res = result.data;
        this.user = res;
-       console.log(res);
      });
    },
       quit(){
