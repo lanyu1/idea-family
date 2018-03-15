@@ -6,6 +6,7 @@ import Register from '../components/login/Register'
 import itemDetail from '../components/item/itemDetail'
 import createEvent from '../components/item/createEvent'
 import eventDetail from '../components/item/eventDetail'
+import userInfo from '../components/userinfo/userInfo.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -39,6 +40,11 @@ export default new Router({
       path: '/createEvent',
       name: 'createEvent',
       component: createEvent
+    },
+    {
+      path:'/userInfo',
+      name:'userInfo',
+      component:userInfo
     }
   ]
 })

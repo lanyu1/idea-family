@@ -24,10 +24,10 @@
             <img _v-4eab2b0c="" src="../../../static/image/header2.jpg"> {{user.nikeName}}
         </a>
         <DropdownMenu slot="list">
-            <DropdownItem><a href="#">个人信息</a></DropdownItem>
-            <DropdownItem><a href="#">我的项目</a></DropdownItem>
-            <DropdownItem><a href="#">修改密码</a></DropdownItem>
-            <DropdownItem><a href="#" @click="quit">退出</a></DropdownItem>
+            <DropdownItem><a href="#"><Icon type="navicon-round"></Icon>&nbsp;&nbsp;我的项目</a></DropdownItem>
+            <DropdownItem><a href="#"><Icon type="star"></Icon>&nbsp;&nbsp;我支持的</a></DropdownItem>
+            <DropdownItem><router-link to="/userInfo"><Icon type="gear-b"></Icon>&nbsp;&nbsp;个人设置</router-link></DropdownItem>
+          <DropdownItem><a href="#" @click="quit"><Icon type="backspace"></Icon>&nbsp;&nbsp;退出</a></DropdownItem>
         </DropdownMenu>
         </Dropdown>
         </label>
