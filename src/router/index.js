@@ -7,6 +7,7 @@ import itemDetail from '../components/item/itemDetail'
 import createEvent from '../components/item/createEvent'
 import eventDetail from '../components/item/eventDetail'
 import userInfo from '../components/userinfo/userInfo.vue'
+import userEvent from '../components/userinfo/userEvent.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -45,6 +46,11 @@ export default new Router({
       path:'/userInfo',
       name:'userInfo',
       component:userInfo
+    },
+    {
+      path:'/userEvent',
+      name:'userEvent',
+      component:userEvent
     }
   ]
 })
