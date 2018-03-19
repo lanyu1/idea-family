@@ -99,7 +99,7 @@
   }
 
 </script>
-<style>
+<style scoped>
   .topContent{
     margin-left:200px;
     text-align: center;
