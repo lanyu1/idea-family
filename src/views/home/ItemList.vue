@@ -12,20 +12,21 @@
 					<li class="programCard" v-for="(item,index) in eventList" :key="index">
 						<div class="card-container">
 							<router-link :to="{name:'eventDetail',params:{id:item.id}}"><img class="cardBg" v-lazy="'/static/image/'+item.photoname"></router-link>
-							<div class="cardContent">
-								<div class="cardBox"> <router-link class="title":to="{name:'eventDetail',params:{id:item.id}}" >{{item.title}}</router-link> 
+							<div class="cardContent" @click.left="click(item.id)">
+								<div class="cardBox"> <router-link class="title":to="{name:'eventDetail',params:{id:item.id}}" >{{item.title}}</router-link>
 								<router-link class="desc"  :to="{name:'eventDetail',params:{id:item.id}}"> {{item.instruction}} </router-link>
 									<div class="detail">
 										<div> <img class="avatar fl" v-lazy="'/static/image/'+item.user.headPhoto"> <span class="author">{{item.user.nikeName}}</span> </div> <span class="locate">{{item.province}}</span> <span class="tag">{{item.eventType.typecontent}}</span> </div>
 									<div class="progressContainer">
 										<progress max="100" value="4500.06"></progress>
 									</div>
-									<nav>
-										<p><span class="num">支持 </span><span class="num">{{item.support}}</span><span class="num">人</span></p>
-										<p><span class="num">创建日期 </span><span class="num">{{item.createtime}}</span><span class="num"></span></p>
-									</nav>
 								</div>
 							</div>
+              <nav>
+                <p><span class="num">支持 </span><span class="num">{{item.support}}</span><span class="num">人</span></p>
+                <p><span class="num"><Icon type="thumbsup" size="22" ></Icon><a @click="great(item.id,item.founderid)">支持</a> </span></p>
+                <p><span class="num"><router-link to="/teamDetail">进入小组</router-link> </span></p>
+              </nav>
 						</div>
 					</li>
 				</ul>
@@ -96,14 +97,23 @@
         </div>
 </template>
 <script>
+/*引入公共方法*/
+import { setCookie,getCookie,delCookie } from '../../assets/js/cookie.js'
 import axios from "axios";
 export default {
   data() {
     return {
+        eventId:'',
       eventList: [],
     };
   },
   mounted: function() {
+    /*页面挂载获取保存的cookie值，渲染到页面上*/
+    let uemail = getCookie('email');
+    /*如果cookie存在，则跳转到登录页*/
+    if(uemail!=""){
+      this.showLogin=true;
+    }
     this.eventLists();
   },
   methods: {
@@ -113,6 +123,41 @@ export default {
         console.log(res);
         this.eventList = res.list;
       });
+    },
+    click(id){
+      /*页面挂载获取保存的cookie值，渲染到页面上*/
+      let uemail = getCookie('email');
+      /*如果cookie不存在，则跳转到登录页*/
+      if(uemail==""){
+        this.$Message.error('登陆后才能查看项目详情!');
+        this.$router.push({
+          path:'/login'
+        });
+      }else{
+        this.$router.push({
+          path:'/eventDetail/'+id,
+        });
+      }
+    },
+    great(id,founderid){
+        var param={
+            eventid:id,
+            userid:founderid
+        }
+      let uemail = getCookie('email');
+      if(uemail==""){
+        this.$Message.error('登陆后才能支持项目!');
+        this.$router.push({
+          path:'/login'
+        });
+      }else{
+        axios.get("http://localhost:8080/great/selectGreat",{
+            params:param
+        }).then(result => {
+          this.$Message.success(result.data);
+          this.eventLists();
+        });
+      }
     }
   }
 };
@@ -126,8 +171,17 @@ export default {
 	color:#5cb975;
 }
 .programCard nav .num {
-	  font-size:15px;	
+	  font-size:15px;
 		color:#5cb975;
+}
+  .num a {
+    font-size:18px;
+    color: #5cb975;
+  }
+.programCard nav{
+  margin-top:-32px;
+  margin-left:22px;
+  margin-right: 22px;
 }
 </style>
 
