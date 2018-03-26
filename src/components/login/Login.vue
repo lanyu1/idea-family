@@ -18,8 +18,8 @@
 							<input autocomplete="off" name="password" class="fs14" placeholder="请输入密码" type="password" v-model="password"> </label>
 					</div>
 					<div class="tr mr105">
-           <a href="javascript:;" class="color-999 mr20" name="loginwithphone" style="">短信验证码登录</a> 
-           <router-link class="color-999" name="forgetpassword1" to="/login">忘记登录密码</router-link></div>
+           <a href="javascript:;" class="color-999 mr20" name="loginwithphone" style="">短信验证码登录</a>
+           <a class="color-999" name="forgetpassword1" @click="forget">忘记登录密码</a></div>
 					<div class="user-btnbox"> <router-link class="ksui-btn" to="/register">免费注册</router-link>
 						<input class="ksui-btn-green" type="button" value="登录" @click="handleSubmit"> </div>
 			</div>
@@ -33,10 +33,12 @@ import axios from "axios";
 export default {
   data() {
     return {
-            showTishi: false,
-            tishi: '',
-            email: '',
-            password: ''
+             showTishi: false,
+             tishi: '',
+             email: '',
+             password: ''
+
+
 		};
   },
 	methods:{
@@ -52,24 +54,45 @@ export default {
             }else if(!regEmail.test(this.email)){
               this.$Message.error("邮箱格式不正确");
          }else{
-            let data ={'email':this.email,'password':this.password}
-            this.$axios.get('http://localhost:8080/user/login',{
-                params:data
-              }).then(res=>{
-              if(res.data==1){
+            const user ={'email':this.email,'password':this.password};
+            console.log(user);
+            this.$axios.post('http://localhost:8080/user/login',JSON.stringify(user),{
+              headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+              }
+            }).then(res=>{
+                  console.log(res);
+              if(res.data.state=="200"){
               this.$Message.success('登录成功!');
               setCookie('email',this.email,1000*60);
               setTimeout(function(){
               this.$router.push('/')
-            }.bind(this),1000)            
+            }.bind(this),1000)
               }else{
-            this.$Message.error('账号不存在请重新输入账号和密码');
-            this.$router.push("/login");
+                this.$Message.error(res.data.message);
               }
             });
     }
-              
+
   },
+    forget(){
+            if(this.email==""){
+              this.$Message.error('请输入邮箱!');
+            }
+              const user ={'email':this.email,'password':this.password};
+              this.$axios.post('http://localhost:8080/user/forget',JSON.stringify(user),{
+                headers: {
+                  'Content-Type': 'application/json;charset=UTF-8'
+                }
+              }).then(res=>{
+               if(res.data.state=="200"){
+                 this.$Message.success('密码重置成功!');
+                 this.$router.push('/login');
+               }else{
+                   this.$Message.error("无效邮箱");
+               }
+             });
+    }
 	},
   components: {
     Header

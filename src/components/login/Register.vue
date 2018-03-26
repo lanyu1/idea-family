@@ -31,7 +31,7 @@
 						<label> <span class="fs14 lh40 w100 tr mr20"><i class="color-red">* </i>确认密码</span>
 							<input class="fs14 invalid untouched pristine" placeholder="请再次输入密码" type="password" autocomplete="off" name="verifycode" v-model="passwordConfirm"> </label>
 					</div>
-					<div class="user-btnbox"> 
+					<div class="user-btnbox">
             <input class="ksui-btn-green" type="button" value="注册" @click="register">
             <router-link class="ksui-btn" to="/login">返回登录</router-link>
 						 </div>
@@ -63,16 +63,22 @@ export default {
 			}else if(this.password!=this.passwordConfirm){
 				this.$Message.error("两次输入的密码不一致");
 			}else{
-				let data ={'nikeName':this.nikeName,'email':this.email,'password':this.password};
-				console.log(data);
-				this.$axios.post('http://localhost:8080/user/register',data).then(res=>{
+				let user ={'nikeName':this.nikeName,'email':this.email,'password':this.password};
+				console.log(user);
+				this.$axios.post('http://localhost:8080/user/register',JSON.stringify(user),{
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+          }
+        }).then(res=>{
 					console.log(res.data);
-           if(res.data==1){
-						  this.$Message.success('注册成功!');
+           if(res.data.state=="200"){
+						  this.$Message.success('注册成功,需激活邮箱后方可登录!');
                 setTimeout(function(){
                 this.$router.push('/login')
-              }.bind(this),1000) 
-					 }
+              }.bind(this),1000)
+					 }else{
+               this.$Message.warning("该邮箱已经被注册,请重新更换邮箱!");
+           }
 				});
 			}
 		},
