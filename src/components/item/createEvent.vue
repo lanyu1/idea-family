@@ -76,6 +76,7 @@ export default {
             return {
                 formValidate: {
                     founderid:null,
+                    eventId:'',
                     title: '',
                     type:'',
                     province:'',
@@ -178,8 +179,40 @@ export default {
                         'Content-Type': 'application/json;charset=UTF-8'
                     }
            }).then((res)=>{
+             this.selectEvent(event.title);
         })
         },
+      createTeam(team){
+        axios.post('http://localhost:8080/team/addTeam',JSON.stringify(team),{
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+          }
+        }).then((res)=>{
+
+        })
+      },
+      selectEvent(val){
+          var param={
+              title:val
+          }
+          this.$axios.get('http://localhost:8080/event/selectByTitle',{
+              params:param
+          }).then(res=>{
+              this.eventId=res.data.id;
+            let team = {
+              'founderid':res.data.founderid,
+              'eventid':this.eventId,
+              'teamname':res.data.title,
+              'teammatenumber':1,
+              'maxteammatenumber':10,
+              'notice':"这是一个公告",
+              'createtime':res.data.createtime,
+              'photoname':res.data.photoname,
+              'description':res.data.instruction
+            }
+            this.createTeam(team);
+          });
+      },
              handleView (name) {
                 this.imgName = name;
                 this.visible = true;
@@ -221,6 +254,7 @@ export default {
                         this.formValidate.city=this.$refs[name].model.data[0];
                         this.formValidate.province=this.$refs[name].model.data[1];
                         this.formValidate.founderid=this.user.id;
+                        this.formValidate.title = this.$refs[name].model.title;
                         console.log(this.formValidate);
                         this.createEvent(this.formValidate);
                         this.$Message.success('创建成功!');
@@ -229,7 +263,7 @@ export default {
                             path:"/itemDetail"
                         });
                     } else {
-                        this.$Message.error('Fail!');
+                        this.$Message.error('创建失败!');
                     }
                 })
             },
@@ -245,7 +279,6 @@ export default {
         }).then(result => {
           let res = result.data;
           this.user = res;
-          console.log(res);
         });
       },
     },
