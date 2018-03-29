@@ -25,7 +25,7 @@
               <nav>
                 <p><span class="num">支持 </span><span class="num">{{item.support}}</span><span class="num">人</span></p>
                 <p><span class="num"><Icon type="thumbsup" size="22" ></Icon><a @click="great(item.id,item.founderid)">支持</a> </span></p>
-                <p><span class="num"><router-link to="/teamDetail">进入小组</router-link> </span></p>
+                <p><span class="num"><a @click="teamInfo(item.founderid,item.id)">进入小组</a> </span></p>
               </nav>
 						</div>
 					</li>
@@ -157,6 +157,23 @@ export default {
           this.$Message.success(result.data);
           this.eventLists();
         });
+      }
+    },
+    teamInfo(founderid,id){
+      var param={
+        founderid:founderid,
+        eventid:id
+      }
+      let uemail = getCookie('email');
+      if(uemail==""){
+        this.$Message.warning('登陆后才能支持项目!');
+        this.$router.push({
+          path:'/login'
+        });
+      }else{
+          this.$router.push({
+            path:'/teamDetail/'+id
+          });
       }
     }
   }

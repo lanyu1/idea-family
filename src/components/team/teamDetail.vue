@@ -12,7 +12,7 @@
             </p>
             <ul>
               <li >
-                <a href="#">欢迎来到小组空间</a>
+                <a href="#">{{this.teamLists.notice}}</a>
                 <span>
                 </span>
               </li>
@@ -30,8 +30,8 @@
                 <Timeline>
                   <TimelineItem color="green">
                     <Icon type="trophy" slot="dot"></Icon>
-                    <p class="time">2018.03.10</p>
-                    <p class="content1">小组创建成功</p>
+                    <p class="time">{{this.schedules.createtime}}</p>
+                    <p class="content1">{{this.schedules.content}}</p>
                   </TimelineItem>
                   <TimelineItem>
                     <p class="time">1976年</p>
@@ -55,7 +55,7 @@
           </a>
           <ul>
             <li >
-              <a href="#">欢迎对本项目进行提问</a>
+              <a href="#">{{this.questions.content}}</a>
               <span>
                 </span>
             </li>
@@ -82,21 +82,70 @@
   </div>
 </template>
 <script>
+  /*引入公共方法*/
+  import { setCookie,getCookie,delCookie } from '../../assets/js/cookie.js'
   import VueStar from 'vue-star';
   import NavHeader from "../../views/home/NavHeader.vue";
+  import axios from 'axios';
   export default{
       data(){
           return {
-
+              id:'',
+              email:'',
+            teamLists:'',
+            schedules:[],
+            questions:[],
+            teammates:[]
           }
       },
-    methods:{
-      questionSubmit(){
+    mounted(){
 
-      },
-      handleClick(){
-
+      /*页面挂载获取保存的cookie值，渲染到页面上*/
+      let uemail = getCookie('email');
+      this.email = uemail;
+      /*如果cookie存在，则跳转到登录页*/
+      if(uemail!=""){
+        this.getUserByEmail();
       }
+    },
+    methods:{
+      getUserByEmail() {
+        var param = {
+          email: this.email,
+        };
+        axios.get("http://localhost:8080/user/getUserByEmail", {
+          params: param
+        }).then(result => {
+          let res = result.data;
+          this.id = res.id;
+          this.teamList(this.id);
+        });
+      },
+          teamList(id){
+              var param={
+                  founderid:id,
+                  eventid:this.$route.params.id
+              };
+            this.$axios.get("http://localhost:8080/team/selectTeamList",{
+              params:param
+            }).then(result => {
+              this.teamLists = result.data[0];
+              this.schedules= result.data[0].schedules[0];
+              this.questions = result.data[0].questions[0];
+              this.teammates = result.data[0].teammates[0];
+
+              console.log(this.teamLists);
+              console.log(this.schedules);
+              console.log(this.questions);
+              console.log(this.teammates);
+            });
+          },
+          questionSubmit(){
+
+          },
+          handleClick(){
+
+          }
     },
     components:{
       NavHeader,

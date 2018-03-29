@@ -84,7 +84,8 @@ export default {
                     data:[],
                     photoname:'',
                     createtime: '',
-                    instruction: ''
+                    instruction: '',
+                     support:0
                 },
                 email:'',
                 user:'',
