@@ -82,7 +82,7 @@ export default {
      var param = {
        email:this.email
      };
-     axios.get("http://localhost:8080/user/getUserByEmail",{
+     axios.get("http://localhost:9090/user/getUserByEmail",{
          params:param
      }).then(result => {
        let res = result.data;

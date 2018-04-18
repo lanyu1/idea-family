@@ -40,7 +40,7 @@
         :before-upload="handleBeforeUpload"
         multiple
         type="drag"
-        action="http://localhost:8080/upload/img"
+        action="http://localhost:9090/upload/img"
         style="display: inline-block;width:58px;">
         <div style="width: 58px;height:58px;line-height: 58px;">
             <Icon type="camera" size="20"></Icon>
@@ -175,7 +175,7 @@ export default {
         },
     methods:{
         createEvent(event){
-           axios.post('http://localhost:8080/event/addEvent',JSON.stringify(event),{
+           axios.post('http://localhost:9090/event/addEvent',JSON.stringify(event),{
            headers: {
                         'Content-Type': 'application/json;charset=UTF-8'
                     }
@@ -184,7 +184,7 @@ export default {
         })
         },
       createTeam(team){
-        axios.post('http://localhost:8080/team/addTeam',JSON.stringify(team),{
+        axios.post('http://localhost:9090/team/addTeam',JSON.stringify(team),{
           headers: {
             'Content-Type': 'application/json;charset=UTF-8'
           }
@@ -196,7 +196,7 @@ export default {
           var param={
               title:val
           }
-          this.$axios.get('http://localhost:8080/event/selectByTitle',{
+          this.$axios.get('http://localhost:9090/event/selectByTitle',{
               params:param
           }).then(res=>{
               this.eventId=res.data.id;
@@ -275,7 +275,7 @@ export default {
         var param = {
           email:this.email
         };
-        axios.get("http://localhost:8080/user/getUserByEmail",{
+        axios.get("http://localhost:9090/user/getUserByEmail",{
           params:param
         }).then(result => {
           let res = result.data;

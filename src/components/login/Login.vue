@@ -56,7 +56,7 @@ export default {
          }else{
             const user ={'email':this.email,'password':this.password};
             console.log(user);
-            this.$axios.post('http://localhost:8080/user/login',JSON.stringify(user),{
+            this.$axios.post('http://localhost:9090/user/login',JSON.stringify(user),{
               headers: {
                 'Content-Type': 'application/json;charset=UTF-8'
               }
@@ -80,7 +80,7 @@ export default {
               this.$Message.error('请输入邮箱!');
             }
               const user ={'email':this.email,'password':this.password};
-              this.$axios.post('http://localhost:8080/user/forget',JSON.stringify(user),{
+              this.$axios.post('http://localhost:9090/user/forget',JSON.stringify(user),{
                 headers: {
                   'Content-Type': 'application/json;charset=UTF-8'
                 }

@@ -113,7 +113,7 @@
         var param = {
           email: this.email,
         };
-        axios.get("http://localhost:8080/user/getUserByEmail", {
+        axios.get("http://localhost:9090/user/getUserByEmail", {
           params: param
         }).then(result => {
           let res = result.data;
@@ -126,7 +126,7 @@
                   founderid:id,
                   eventid:this.$route.params.id
               };
-            this.$axios.get("http://localhost:8080/team/selectTeamList",{
+            this.$axios.get("http://localhost:9090/team/selectTeamList",{
               params:param
             }).then(result => {
               this.teamLists = result.data[0];
