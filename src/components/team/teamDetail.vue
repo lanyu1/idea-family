@@ -10,6 +10,10 @@
               <Icon type="ios-film-outline" size="20"></Icon>
               公告
             </p>
+            <a href="#" slot="extra" @click="updateNotice">
+              <Icon type="edit" size="20"></Icon>
+              更新公告
+            </a>
             <ul>
               <li >
                 <a href="#">{{this.teamLists.notice}}</a>
@@ -91,6 +95,7 @@
       data(){
           return {
               id:'',
+            founderId:'',
               email:'',
             teamLists:'',
             schedules:[],
@@ -106,9 +111,22 @@
       /*如果cookie存在，则跳转到登录页*/
       if(uemail!=""){
         this.getUserByEmail();
+        this.getFounderId();
       }
     },
     methods:{
+      getFounderId(){
+        var param = {
+          id: this.$route.params.id,
+        };
+        axios.get("http://localhost:8080/event/getEvent", {
+          params: param
+        }).then(result => {
+          let res = result.data;
+          this.founderId = res.founderid;
+          this.teamList(this.founderId);
+        });
+      },
       getUserByEmail() {
         var param = {
           email: this.email,
@@ -117,10 +135,10 @@
           params: param
         }).then(result => {
           let res = result.data;
-          this.id = res.id;
-          this.teamList(this.id);
+          console.log(res);
         });
       },
+
           teamList(id){
               var param={
                   founderid:id,
@@ -130,10 +148,10 @@
               params:param
             }).then(result => {
               this.teamLists = result.data[0];
-              this.schedules= result.data[0].schedules[0];
               this.questions = result.data[0].questions[0];
+              this.schedules= result.data[0].schedules[0];
               this.teammates = result.data[0].teammates[0];
-
+              console.log(result.data);
               console.log(this.teamLists);
               console.log(this.schedules);
               console.log(this.questions);
@@ -142,6 +160,9 @@
           },
           questionSubmit(){
 
+          },
+          updateNotice(){
+                alert(1111);
           },
           handleClick(){
 
