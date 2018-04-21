@@ -145,7 +145,7 @@ methods:{
     var param = {
       email:this.email,
     };
-    axios.get("http://localhost:8080/user/getUserByEmail",{
+    axios.get("http://localhost:9090/user/getUserByEmail",{
       params:param
     }).then(result => {
       let res = result.data;
@@ -156,7 +156,7 @@ methods:{
   submit(){
       console.log(111);
       this.nowDate = new Date();
-    axios.post('http://localhost:8080/comment/addComment',{
+    axios.post('http://localhost:9090/comment/addComment',{
       eventid:this.$route.params.id,
       commentid:this.loginUser.id,
       content:this.comment,
@@ -174,7 +174,7 @@ methods:{
 		var param={
           id:this.$route.params.id
 		}
-	this.$axios.get('http://localhost:8080/event/getEvent',{
+	this.$axios.get('http://localhost:9090/event/getEvent',{
 		params:param
 	}).then(res=>{
          console.log(res.data);
@@ -189,7 +189,7 @@ methods:{
         page: this.current,
         pageSize: this.pageSize
         };
-    this.$axios.get("http://localhost:8080/comment/getComments",{
+    this.$axios.get("http://localhost:9090/comment/getComments",{
         params:param
     }).then(result => {
       let res = result.data;

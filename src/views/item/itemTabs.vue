@@ -166,7 +166,7 @@ export default {
         pageSize: this.pageSize
       };
       axios
-        .get("http://localhost:8080/event/getEventsByTime", {
+        .get("http://localhost:9090/event/getEventsByTime", {
           params: param
         })
         .then(result => {
@@ -182,7 +182,7 @@ export default {
         pageSize: this.pageSize
       };
       axios
-        .get("http://localhost:8080/event/getEventType", {
+        .get("http://localhost:9090/event/getEventType", {
           params: param
         })
         .then(result => {

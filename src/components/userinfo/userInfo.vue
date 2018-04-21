@@ -72,7 +72,7 @@
         var param = {
           email:this.email
         };
-        axios.get("http://localhost:8080/user/getUserByEmail",{
+        axios.get("http://localhost:9090/user/getUserByEmail",{
           params:param
         }).then(result => {
           let res = result.data;
@@ -87,7 +87,7 @@
         });
       },
       submitInfo(){
-        axios.put('http://localhost:8080/user/updateUser',{
+        axios.put('http://localhost:9090/user/updateUser',{
             id:this.formItem.id,
             nikeName:this.formItem.nikename,
             specialty:this.formItem.specialty,
@@ -104,7 +104,7 @@
           if(this.formItem1.pwd!=this.formItem1.newpwd){
             this.$Message.error('两次输入的密码不一致请重新输入！');
           }else{
-            axios.put('http://localhost:8080/user/updateUser',{
+            axios.put('http://localhost:9090/user/updateUser',{
               id:this.formItem.id,
               password:this.formItem1.pwd
             },{

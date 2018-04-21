@@ -82,7 +82,7 @@ export default {
         pageSize: this.pageSize
       };
       axios
-        .get("http://localhost:8080/event/getSearchEvents", {
+        .get("http://localhost:9090/event/getSearchEvents", {
           params: param
         })
         .then(result => {

@@ -65,7 +65,7 @@ export default {
 			}else{
 				let user ={'nikeName':this.nikeName,'email':this.email,'password':this.password};
 				console.log(user);
-				this.$axios.post('http://localhost:8080/user/register',JSON.stringify(user),{
+				this.$axios.post('http://localhost:9090/user/register',JSON.stringify(user),{
           headers: {
             'Content-Type': 'application/json;charset=UTF-8'
           }

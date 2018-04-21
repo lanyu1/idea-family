@@ -118,7 +118,7 @@ export default {
   },
   methods: {
     eventLists() {
-      axios.get("http://localhost:8080/event/getEventsByTime").then(result => {
+      axios.get("http://localhost:9090/event/getEventsByTime").then(result => {
         let res = result.data;
         console.log(res);
         this.eventList = res.list;
@@ -151,7 +151,7 @@ export default {
           path:'/login'
         });
       }else{
-        axios.get("http://localhost:8080/great/selectGreat",{
+        axios.get("http://localhost:9090/great/selectGreat",{
             params:param
         }).then(result => {
           this.$Message.success(result.data);
