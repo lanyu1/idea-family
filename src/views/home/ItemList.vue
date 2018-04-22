@@ -166,7 +166,7 @@ export default {
       }
       let uemail = getCookie('email');
       if(uemail==""){
-        this.$Message.warning('登陆后才能支持项目!');
+        this.$Message.success('登陆后进入小组页面!');
         this.$router.push({
           path:'/login'
         });
