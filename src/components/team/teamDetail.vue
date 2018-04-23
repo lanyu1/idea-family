@@ -119,7 +119,7 @@
         var param = {
           id: this.$route.params.id,
         };
-        axios.get("http://localhost:8080/event/getEvent", {
+        axios.get("http://localhost:9090/event/getEvent", {
           params: param
         }).then(result => {
           let res = result.data;

@@ -11,7 +11,6 @@
                 <a  _v-528bc6ac="" @click="searchCity" data-name="北京">标题</a>
                 <a  _v-528bc6ac="" @click="searchCity" data-name="上海">类型</a>
                 <a  _v-528bc6ac="" @click="searchCity" data-name="杭州">城市</a>
-                <a  _v-528bc6ac="" @click="searchCity" data-name="南京">南京</a>
           </div>
 				</div>
 			</div>
@@ -55,6 +54,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      typeContent:null,
       searchContent:null,
       searchContent1:null,
       eventListBySearch:[],
@@ -85,7 +85,7 @@ export default {
         pageSize: this.pageSize
       };
       axios
-        .get("http://localhost:9090/event/getSearchEvents", {
+        .get("http://localhost:9090/event/getSearchEventsByLike", {
           params: param
         })
         .then(result => {
