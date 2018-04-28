@@ -7,8 +7,8 @@
        <div class="c43">
          <div class="c40">{{event.title}}</div>
          <div class="c42">
-           <a href="http://www.demohour.com/search?q=%E7%B2%BE%E5%87%86%E6%89%B6%E8%B4%AB&amp;t=projects&amp;c=tags_collection">加入小组</a>
-           <a href="http://www.demohour.com/search?q=%E5%87%BA%E7%89%88&amp;t=projects&amp;c=tags_collection">{{eventType.typecontent}}</a>
+           <a href="#">加入小组</a>
+           <a href="#">{{eventType.typecontent}}</a>
          </div>
          <div class="c44">
            {{event.instruction}}
@@ -39,27 +39,94 @@
             </div>
           </TabPane>
           <TabPane label="评价" icon="chatbubble-working">
-            <div>
-            <Input v-model="comment" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请先登录后再发表..."></Input>
-            <Button type="success" size="large" @click="submit()">发表</Button>
+           <div id='comment'>
+        <div class='newComment'>
+            <textarea spellcheck='false' placeholder='说点什么吧...' v-model='content' id='reply' ref='textBox'></textarea>
+            <div class="inputBox">
+                <!-- <button @click='summit' :disabled='summitFlag'>
+                    <span>{{summitFlag ? '提交中...' : '发布评论'}}</span>
+                </button> -->
+                <Button type="success" @click='summit' :disabled='summitFlag'>
+                   <span>{{summitFlag ? '提交中...' : '发布评论'}}</span>
+                </Button>
             </div>
-            <div class="commemtlist ">
-              <dl v-for="(item,index) in commentList" :key="index">
-                <dt>
-                  <img src="../../../static/image/header2.jpg">
-                  <span class="username ">{{item.user.nikeName}}</span>
-                </dt>
-                <dd class="commentwords "><i class="icon-style icon-file-alt ">{{item.content}}</i></dd>
-                <dd class="btbar ">
-                  <span class="like red "><i class="icon-style icon-thumbs-up "></i>点赞(<strong @click="like(index) ">点赞</strong>)</span>
-                  <span class="notlike red "><i class="icon-style icon-thumbs-down "></i>回复(<strong @click="notlike(index) ">回复</strong>)</span>
-                  <span class="data red "><i class="icon-style icon-calendar "></i>时间<strong>{{item.commenttime}}</strong></span>
-                </dd>
-              </dl>
+        </div>
+        <div class='allComments'>
+            <div class='summary'>
+                <p>评论数 {{commentList.length}}</p>
+                <p>
+                   <!-- <span @click="getAllComments({id: $route.params.id})">最早 </span>|
+                   <span @click="getAllComments({id: $route.params.id, sort: 'date'})">最新 </span>|
+                   <span @click="getAllComments({id: $route.params.id, sort: 'like'})"> 最热</span> -->
+                </p>
             </div>
+            <div class='comments' v-for="(comment,index) in commentList" :key="index">
+                <div id='info' :class='comment.imgName'>
+                    <p class='commentName'>#{{index + 1}} <span>{{comment.user.nikeName}}</span></p>
+                    <p class='text'>{{comment.content}}</p>
+                    <div class='options'>
+                        <p class='commentDate'>{{comment.commenttime}}</p>
+                        <a href='#comment' data-scroll>
+                            <span @click='reply(comment.user.nikeName)'>
+                                <i class='iconfont icon-huifu'></i>回复
+                            </span>
+                        </a>
+                        <!-- <p @click='addLike(comment._id, index)'>
+                            <i class='iconfont icon-like' :class='{activeLike: likeArr.indexOf(index) !== -1}'>
+                            </i> {{comment.like}}
+                        </p> -->
+                    </div>
+                </div>
+            </div>
+            <p v-show='commentList.length === 0' class='nocomment'>哎，没人理我 :()</p>
+        </div>
+    </div>
             <Page :total=this.total :pageSize="4" :current="1" @on-change="handleClick" show-elevator></Page>
           </TabPane>
-          <TabPane label="支持" icon="thumbsup">标签四的内容</TabPane>
+          <TabPane label="支持" icon="thumbsup">
+            <div id='comment'>
+        <div class='newComment'>
+            <textarea spellcheck='false' placeholder='说点什么吧...' v-model='content' id='reply' ref='textBox'></textarea>
+            <div class="inputBox">
+                <!-- <button @click='summit' :disabled='summitFlag'>
+                    <span>{{summitFlag ? '提交中...' : '发布评论'}}</span>
+                </button> -->
+                <Button type="success" @click='summit' :disabled='summitFlag'>
+                   <span>{{summitFlag ? '提交中...' : '发布评论'}}</span>
+                </Button>
+            </div>
+        </div>
+        <div class='allComments'>
+            <div class='summary'>
+                <p>评论数 {{commentList.length}}</p>
+                <p>
+                   <!-- <span @click="getAllComments({id: $route.params.id})">最早 </span>|
+                   <span @click="getAllComments({id: $route.params.id, sort: 'date'})">最新 </span>|
+                   <span @click="getAllComments({id: $route.params.id, sort: 'like'})"> 最热</span> -->
+                </p>
+            </div>
+            <div class='comments' v-for="(comment,index) in commentList" :key="index">
+                <div id='info' :class='comment.imgName'>
+                    <p class='commentName'>#{{index + 1}} <span>{{comment.user.nikeName}}</span></p>
+                    <p class='text'>{{comment.content}}</p>
+                    <div class='options'>
+                        <p class='commentDate'>{{comment.commenttime}}</p>
+                        <a href='#comment' data-scroll>
+                            <span @click='reply(comment.user.nikeName)'>
+                                <i class='iconfont icon-huifu'></i>回复
+                            </span>
+                        </a>
+                        <!-- <p @click='addLike(comment._id, index)'>
+                            <i class='iconfont icon-like' :class='{activeLike: likeArr.indexOf(index) !== -1}'>
+                            </i> {{comment.like}}
+                        </p> -->
+                    </div>
+                </div>
+            </div>
+            <p v-show='commentList.length === 0' class='nocomment'>哎，没人理我 :()</p>
+        </div>
+    </div>
+          </TabPane>
         </Tabs>
       </div>
     </div>
@@ -85,18 +152,14 @@
     </div>
       <d1 class="project-initiator">
         <dd class="c8">
-          <a href="http://www.demohour.com/1633633" target="_blank" class="v3"><img v-lazy="'/static/image/'+infoUser.headPhoto"><i></i></a>
+          <a href="#" target="_blank" class="v3"><img v-lazy="'/static/image/'+infoUser.headPhoto"><i></i></a>
         </dd>
-        <dt><a href="http://www.demohour.com/1633633">{{infoUser.nikeName}}</a>
+        <dt><a href="#">{{infoUser.nikeName}}</a>
         </dt>
         <dd class="c9">
-          <a title="私信给 91悦读会" href="http://www.demohour.com/messages?recipient_id=1633633" class="action-popup-login action-popup-verify action-popup-message message">发私信</a>
-          <span class="action-follow followed_1633633 hide" data-action-target="1633633" style="display: none;"><a class="c83" href="http://www.demohour.com/users/1633633/follow" data-remote="true"><span>已关注</span></a>
-							</span>
-          <span class="action-follow followed_each_1633633 hide" data-action-target="1633633" style="display: none;"><a class="c84" href="http://www.demohour.com/users/1633633/follow" data-remote="true"><span>相互关注</span></a>
-							</span>
-          <span class="action-follow follow_1633633" data-action-target="1633633"><a href="http://www.demohour.com/users/1633633/follow" class="action-popup-login" data-remote="true"><span>+ 加关注</span></a>
-							</span>
+          <a title="私信给 91悦读会" href="#" class="action-popup-login action-popup-verify action-popup-message message">发私信</a>
+          <span class="action-follow followed_1633633 hide" data-action-target="1633633" style="display: none;"><a class="c83" href="#" data-remote="true"><span>已关注</span></a>
+					</span>
         </dd>
       </d1>
     </div>
@@ -110,6 +173,24 @@ import axios from 'axios'
 export default {
 data(){
     return{
+        summitFlag: false,
+        name: '',
+        address: '',
+        content: '',
+        imgName: '',
+       
+
+
+
+
+
+
+
+
+
+
+      replyContent:'',
+       showReply:false,
        email:'',
        event:'',
 	     id:'',
@@ -130,13 +211,24 @@ data(){
     /*页面挂载获取保存的cookie值，渲染到页面上*/
     let uemail = getCookie('email');
     this.email = uemail;
-    /*如果cookie存在，则跳转到登录页*/
+    /*如果cookie不存在，则跳转到登录页*/
     if(uemail!=""){
       this.showLogin=true;
       this.getUserByEmail();
     }
   },
 methods:{
+  summit(){
+      if(!this.content){
+        this.$$Message.warning("您还没有输入要评论的信息");
+      }
+  },
+  reply(name){
+    alert(name);
+    this.showReply=true;
+    this.content = '@' + name + ': ';
+    // this.$refs.textBox.focus();
+  },
   handleClick(val){
     this.current=val;
     this.commentLists();
@@ -154,7 +246,12 @@ methods:{
     });
   },
   submit(){
-      console.log(111);
+      if(this.email==""){
+          this.$Message.error("先登录才能发表评论");
+          this.$router.push({
+          path:'/login'
+        });
+      }else{
       this.nowDate = new Date();
     axios.post('http://localhost:9090/comment/addComment',{
       eventid:this.$route.params.id,
@@ -167,8 +264,10 @@ methods:{
       }
     }).then((res)=>{
         this.comment='',
+        this.$Message.success("评论成功");
         this.commentLists();
     })
+    }
   },
 	eventById(){
 		var param={
@@ -186,6 +285,7 @@ methods:{
 	},
   commentLists(){
 	    var param={
+        eventid:this.$route.params.id,
         page: this.current,
         pageSize: this.pageSize
         };
@@ -204,7 +304,7 @@ components:{
 }
 }
 </script>
-<style scoped>
+<style lang='scss' rel='stylesheet/scss' scoped>
   .c43 {
     width: 630px;
     overflow: hidden;
@@ -491,74 +591,193 @@ components:{
     float: right;
     margin-right:15px;
   }
-  /*评论框*/
- .commemtlist {
-    padding: 10px;
-  }
 
- .commemtlist dl {
-    padding: 20px 0;
-    border-bottom: 1px solid #D2D2D2;
-  }
+#comment {
+    margin: 0.875rem auto 0.625rem;
+    text-align: left;
+    .newComment {
+        position: relative;
+        width: 100%;
+        textarea {
+            color: #000;
+            font-size: 1.125rem;
+            padding: 0.5rem;
+            border-radius: 0.625rem;
+            width: calc(100% - 18.5rem);
+            margin-left: 1.625rem;
+            height: 6.5rem;
+            resize: none;
+            background: transparent;
+            outline: none;
+            font-family: Georgia, 'Times New Roman', 'Microsoft YaHei', '微软雅黑',  STXihei, '华文细黑',  serif;
+        }
+        .inputBox {
+           margin-left: 1.625rem;
+        }
+    }
+    .allComments {
+         width: 100%;
+         margin: 0.875rem auto 0.625rem;
+        .summary {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(245, 245, 245, 0.5);
+            padding: 0.625rem;
+            border-radius:  0.3125rem;
+            span {
+                cursor: pointer;
+                &:hover {
+                    color: #3c763d;
+                 }
+            }
+        }
+        .comments {
+            position: relative;
+            padding: 0.3125rem;
+            margin-top: 0.625rem;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            #info {
+                width: 70%;
+                border: 0.125rem solid #cccccc;
+                border-radius: 0.3125rem;
+                padding: 0.625rem;
+                color: #000;
+                .commentName {
+                    font-size: 1.125rem;
+                    margin-bottom: 0.3125rem;
+                    span {
+                        color: #3c763d;
+                    }
+                }
+                .text {
+                    overflow: hidden;
+                    margin-top: 0.625rem;
+                    margin-left: 0.625rem;
+                    margin-bottom: 0.625rem;
+                }
+                .options {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: flex-end;
+                    text-align: right;
+                    a {
+                        color: #000;
+                        margin-right: 0.625rem;
+                        i.icon-huifu {
+                            margin-right: 0.3125rem;
+                        }
+                        &:hover {
+                            color: #3c763d;
+                         }
+                    }
+                    p {
+                        display: inline-block;
+                        margin-right: 0.3125rem;
+                        cursor: pointer;
+                        &:hover {
+                             color: #3c763d;
+                         }
+                    }
+                }
+                img {
+                    width: 3.75rem;
+                    height: 3.75rem;
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -1.875rem;
+                    border: 0.125rem solid #cccccc;
+                    border-radius: 0.3125rem;
+                }
+            }
+        }
+        .nocomment {
+            margin: 1.25rem auto;
+            text-align: center;
+        }
+    }
+}
+.activeLike {
+    color: #ffc520;
+}
+.reviewer {
+    margin-left: 6.25rem;
+    img {
+        left: 0.625rem;
+    }
+    &:after {
+         position: absolute;
+         left: 5.55rem;
+         top: 50%;
+         margin-top: -0.4375rem;
+         content: '';
+         width: 0;
+         height: 0;
+         border: 0.625rem solid transparent;
+         border-right-color: #000000;
+         z-index: 3;
+     }
+    &:before {
+         position: absolute;
+         left: 5.4rem;
+         top: 50%;
+         margin-top: -0.4375rem;
+         content: '';
+         width: 0;
+         height: 0;
+         border: 0.625rem solid transparent;
+         border-right-color: #cccccc;
+         z-index: 2;
+     }
+}
+.me {
+    position: relative;
+    margin-left: calc(40% - 7.625rem);
+    img {
+        right: -5.9375rem;
+    }
+    &:after {
+         position: absolute;
+         right: -1.15rem;
+         top: 50%;
+         margin-top: -0.5rem;
+         content: '';
+         width: 0;
+         height: 0;
+         border: 0.625rem solid transparent;
+         border-left-color: #000000;
+         z-index: 3;
+     }
+    &:before {
+         position: absolute;
+         right: -1.3rem;
+         top: 50%;
+         margin-top: -0.5rem;
+         content: '';
+         width: 0;
+         height: 0;
+         border: 0.625rem solid transparent;
+         border-left-color: #cccccc;
+         z-index: 2;
+     }
+}
 
- .commemtlist dl dt {
-    float: left;
-    text-align: center;
-    margin-right: 15px;
-  }
-
- .commemtlist dl dt img {
-    height: 50px;
-    width: 50px;
-    border-radius: 25px;
-  }
-
- .commemtlist dl dd {
-    padding-bottom: 10px;
-  }
-
- .commemtlist .btbar span {
-    margin-right: 15px;
-    font-size: 10px;
-  }
-
- .commemtlist .btbar .red strong {
-    color: red;
-    margin: 0 3px;
-    font-weight: normal;
-    cursor: pointer;
-  }
-
- .commemtlist .username {
-    display: block;
-    font-size: 12px;
-    text-align: center;
-  }
-
- .commemtlist .wordsbox textarea {
-    height: 100px;
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    resize: none;
-  }
-
- .commemtlist .wordsbox span {
-    font-size: 13px;
-    margin-right: 15px;
-    text-decoration: underline;
-    color: blue;
-    cursor: pointer;
-  }
-
- .commemtlist .wordsbox input {
-    float: right;
-    width: 80px;
-    height: 28px;
-    text-align: center;
-    color: #fff;
-    background: red;
-    border: none;
-    border-radius: 3px;
-  }
+@media screen and (max-width: 980px) {
+    .newComment {
+        img {
+            display: none !important;
+        }
+        textarea {
+            width: calc(100% - 0.875rem) !important;
+            margin-left: 0 !important;
+        }
+        .inputBox {
+            margin-left: 0 !important;
+            input {
+                width: 40% !important;
+            }
+        }
+    }
+}
 </style>
