@@ -99,11 +99,6 @@
         <div class='allComments'>
             <div class='summary'>
                 <p>评论数 {{commentList.length}}</p>
-                <p>
-                   <!-- <span @click="getAllComments({id: $route.params.id})">最早 </span>|
-                   <span @click="getAllComments({id: $route.params.id, sort: 'date'})">最新 </span>|
-                   <span @click="getAllComments({id: $route.params.id, sort: 'like'})"> 最热</span> -->
-                </p>
             </div>
             <div class='comments' v-for="(comment,index) in commentList" :key="index">
                 <div id='info' :class='comment.imgName'>
@@ -220,7 +215,30 @@ data(){
 methods:{
   summit(){
       if(!this.content){
-        this.$$Message.warning("您还没有输入要评论的信息");
+        this.$Message.warning("您还没有输入要评论的信息");
+      }else{
+        if(this.email==""){
+          this.$Message.error("先登录才能发表评论");
+          this.$router.push({
+          path:'/login'
+        });
+      }else{
+      this.nowDate = new Date();
+    axios.post('http://localhost:9090/comment/addComment',{
+      eventid:this.$route.params.id,
+      commentid:this.loginUser.id,
+      content:this.comment,
+      commenttime:this.nowDate
+    },{
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8'
+      }
+    }).then((res)=>{
+        this.comment='',
+        this.$Message.success("评论成功");
+        this.commentLists();
+    })
+      }
       }
   },
   reply(name){
