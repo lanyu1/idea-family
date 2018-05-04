@@ -7,7 +7,7 @@
             <div class="card-container">
               <router-link :to="{name:'eventDetail',params:{id:item.id}}"><img class="cardBg" v-lazy="'/static/image/'+item.photoname"></router-link>
               <div class="cardContent" @click.left="click(item.id)">
-                <div class="cardBox"> <router-link class="title":to="{name:'eventDetail',params:{id:item.id}}" >{{item.title}}</router-link>
+                <div class="cardBox"> <router-link class="title" :to="{name:'eventDetail',params:{id:item.id}}" >{{item.title}}</router-link>
                   <router-link class="desc"  :to="{name:'eventDetail',params:{id:item.id}}"> {{item.instruction}} </router-link>
                   <div class="detail">
                     <div> <img class="avatar fl" v-lazy="'/static/image/'+item.user.headPhoto"> <span class="author">{{item.user.nikeName}}</span> </div> <span class="locate">{{item.province}}</span> <span class="tag">{{item.eventType.typecontent}}</span> </div>
@@ -33,7 +33,7 @@
             <div class="card-container">
               <router-link :to="{name:'eventDetail',params:{id:item.id}}"><img class="cardBg" v-lazy="'/static/image/'+item.photoname"></router-link>
               <div class="cardContent" @click.left="click(item.id)">
-                <div class="cardBox"> <router-link class="title":to="{name:'eventDetail',params:{id:item.id}}" >{{item.title}}</router-link>
+                <div class="cardBox"> <router-link class="title" :to="{name:'eventDetail',params:{id:item.id}}" >{{item.title}}</router-link>
                   <router-link class="desc"  :to="{name:'eventDetail',params:{id:item.id}}"> {{item.instruction}} </router-link>
                   <div class="detail">
                     <div> <img class="avatar fl" v-lazy="'/static/image/'+item.user.headPhoto"> <span class="author">{{item.user.nikeName}}</span> </div> <span class="locate">{{item.province}}</span> <span class="tag">{{item.eventType.typecontent}}</span> </div>
@@ -60,7 +60,7 @@
             <div class="card-container">
               <router-link :to="{name:'eventDetail',params:{id:item.id}}"><img class="cardBg" v-lazy="'/static/image/'+item.photoname"></router-link>
               <div class="cardContent" @click.left="click(item.id)">
-                <div class="cardBox"> <router-link class="title":to="{name:'eventDetail',params:{id:item.id}}" >{{item.title}}</router-link>
+                <div class="cardBox"> <router-link class="title" :to="{name:'eventDetail',params:{id:item.id}}" >{{item.title}}</router-link>
                   <router-link class="desc"  :to="{name:'eventDetail',params:{id:item.id}}"> {{item.instruction}} </router-link>
                   <div class="detail">
                     <div> <img class="avatar fl" v-lazy="'/static/image/'+item.user.headPhoto"> <span class="author">{{item.user.nikeName}}</span> </div> <span class="locate">{{item.province}}</span> <span class="tag">{{item.eventType.typecontent}}</span> </div>
@@ -87,7 +87,7 @@
             <div class="card-container">
               <router-link :to="{name:'eventDetail',params:{id:item.id}}"><img class="cardBg" v-lazy="'/static/image/'+item.photoname"></router-link>
               <div class="cardContent" @click.left="click(item.id)">
-                <div class="cardBox"> <router-link class="title":to="{name:'eventDetail',params:{id:item.id}}" >{{item.title}}</router-link>
+                <div class="cardBox"> <router-link class="title" :to="{name:'eventDetail',params:{id:item.id}}" >{{item.title}}</router-link>
                   <router-link class="desc"  :to="{name:'eventDetail',params:{id:item.id}}"> {{item.instruction}} </router-link>
                   <div class="detail">
                     <div> <img class="avatar fl" v-lazy="'/static/image/'+item.user.headPhoto"> <span class="author">{{item.user.nikeName}}</span> </div> <span class="locate">{{item.province}}</span> <span class="tag">{{item.eventType.typecontent}}</span> </div>
@@ -114,7 +114,7 @@
             <div class="card-container">
               <router-link :to="{name:'eventDetail',params:{id:item.id}}"><img class="cardBg" v-lazy="'/static/image/'+item.photoname"></router-link>
               <div class="cardContent" @click.left="click(item.id)">
-                <div class="cardBox"> <router-link class="title":to="{name:'eventDetail',params:{id:item.id}}" >{{item.title}}</router-link>
+                <div class="cardBox"> <router-link class="title" :to="{name:'eventDetail',params:{id:item.id}}" >{{item.title}}</router-link>
                   <router-link class="desc"  :to="{name:'eventDetail',params:{id:item.id}}"> {{item.instruction}} </router-link>
                   <div class="detail">
                     <div> <img class="avatar fl" v-lazy="'/static/image/'+item.user.headPhoto"> <span class="author">{{item.user.nikeName}}</span> </div> <span class="locate">{{item.province}}</span> <span class="tag">{{item.eventType.typecontent}}</span> </div>

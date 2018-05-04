@@ -51,13 +51,13 @@
     </Modal>
         </FormItem>
         <FormItem label="项目名称" prop="title">
-            <Input v-model="formValidate.title" placeholder="请输入项目名称"></Input>
+            <Input v-model="formValidate.title" placeholder="请输入项目名称" />
         </FormItem>
         <FormItem label="区域选择" prop="city">
           <Cascader :data="data" v-model="formValidate.data"></Cascader>
         </FormItem>
         <FormItem label="项目描述" prop="instruction">
-            <Input v-model="formValidate.instruction" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请对你的项目进行简单的描述..."></Input>
+            <Input v-model="formValidate.instruction" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请对你的项目进行简单的描述..." />
         </FormItem>
         <FormItem>
             <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
@@ -189,7 +189,6 @@ export default {
             'Content-Type': 'application/json;charset=UTF-8'
           }
         }).then((res)=>{
-
         })
       },
       selectEvent(val){
@@ -285,7 +284,6 @@ export default {
     },
     mounted () {
             this.uploadList = this.$refs.upload.fileList;
-
       /*页面挂载获取保存的cookie值，渲染到页面上*/
       let uemail = getCookie('email');
       this.email = uemail;

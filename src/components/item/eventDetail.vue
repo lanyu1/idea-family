@@ -111,10 +111,6 @@
                                 <i class='iconfont icon-huifu'></i>回复
                             </span>
                         </a>
-                        <!-- <p @click='addLike(comment._id, index)'>
-                            <i class='iconfont icon-like' :class='{activeLike: likeArr.indexOf(index) !== -1}'>
-                            </i> {{comment.like}}
-                        </p> -->
                     </div>
                 </div>
             </div>

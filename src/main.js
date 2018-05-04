@@ -9,7 +9,9 @@ import VueLazyload from 'vue-lazyload'
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 import VueStar from 'vue-star';
-
+import fullCalendar from 'vue-fullcalendar';
+//引入日历
+Vue.component('full-calendar', fullCalendar);
 //引入vue-star组件
 Vue.use('VueStar', VueStar);
 //引入iView组件
