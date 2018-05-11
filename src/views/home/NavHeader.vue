@@ -8,7 +8,6 @@
         <i class="split"></i></a>
         <router-link to="/" title="开始吧首页" class="link-index link-nav">首页</router-link>
         <router-link to="/itemDetail" title="更多项目" class="ml33 link-nav">更多项目</router-link>
-        <a href="https://www.kaishiba.com/special/sys/about" class="ml48 link-nav">关于我们</a>
         </div>
 		<div class="right">
 			<router-link to="/itemDetail" title="搜索项目" class=""><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAA/lJREFUWAntl8tL1FEUx53xlailEWQSI1jYplY6imk5FUgUPTaVtKiFi6A/oEWrIoJWQYtqEbiMkhZm9trUQKL4grJVaAuxUUTLIsXxNdPnTHN/XMf5/e5vJiyCuXDnnN8953zv9577nKysTMlkIJOB/zsDnnToNzQ0lIfD4VPEHqPuopZTo9QJj8czQn3u9Xo7+/r6pmj7o5ISQb/fXxaNRq/RYysyx9DzMvb71BtDQ0MzBl9bs2uC1dXVx8nMQ4htToIWoU2w1uER841snunv73+TJM7Y5DV64EDmLiM6NXIynR10fp7OfcXFxfl8S62g7QL1BXqsELM1Eom8ZoAXVVsqct2IE4Mlc7R1UtVghrOzs1vJyGCir/7NoPZDro26J96+DPHmwcHBoO5n0h0JxtfcJ5U5OnhZVFR0NhgMzpmAxR4IBErm5uY6iG+K+88UFBRUdXd3z7qJFx+VlaT+AF9T5HAYToWcADKQ78ScRh2Rb8q2hYWFq79Vd7+2GZSjZHFxcQyCslujOTk5fo6NIXewa71qamoC4LyVVmYhDOkdQn6tV/Iv2wxyzp2Mk5PIp+mSk+D4uovtYjA3zc/Py7p2VWwJEm2BMOp2V2gOTuz2x8oMSQtbtdlJJ4JyQ8QKu/ad0tOVCRgWtgnPiaBcX1IiPp9v8rea/i9ZC2nRCltrSq46EZTDOFamp6dtN5PyMcmVlRUdw8I2xTkRVFnzcjSUmYBM9tzcXCtrZHPC5K/stgTZGKPKidEfVHq6MgHjs1scW4IAPFcgkD2n9HQlWdMxLGwTni1BADshtiIA6Ce49vwmMDt7bW3tYWyHxA5mmMeF9Ziwi1HttgR5w01C7EHc0YPexu1SrALdyvr6+q2rq6sKRwjecXuLSB+2BMXI9XYd8UN0CO7ldnmSCsnGxsbSpaWlD4RXCgbkvhYWFt4S3W1xJChPdm6AFoBX44DN3M+9PMHqTB0wrQfY/QP47VS+DDJC/Db17UbqZ5OtP5f9JYx36SBbc+qCeDtZfldaWjoJGQ93rBwlTTxQW5DNmq+uhvLy8gK9vb3WKaEbE3VXBCWIPXKUjh+hbkkEcfpmULMMRPopUX58fqE9wDo3HjeOU6wARQ4MDLzKz8+vQr1HB7HdrduT6Iv43SZmNzY5R60/TpDbiS3IUjHeya4zqBOoq6vbTjblOXacWkln5Ui5vuRv5yi1C/sz/d8cZPZhlyeXtQbxM2YyLYI62VR0O5Ksycaenp6xZFiupzhZcKptZPQjm+oIcWumm5190w7rrxIUEhxdw4kkmWp1jK3jqR8b64wb1RAKhaYqKiq6WLY+yL1nI10ZHx//uVH9ZXAzGchk4F9m4BcuV31unAeqlQAAAABJRU5ErkJggg=="
@@ -21,11 +20,10 @@
           <div class="index-header-wrap" v-show="showLogin==true"><label id="userLogout">
           <Dropdown trigger="click" style="margin-left: 20px">
         <a href="javascript:void(0)">
-            <img _v-4eab2b0c="" src="../../../static/image/header2.jpg"> {{user.nikeName}}
+            <img _v-4eab2b0c="" v-lazy="'/static/image/'+user.headPhoto"> {{user.nikeName}}
         </a>
         <DropdownMenu slot="list">
             <DropdownItem><router-link to="/userEvent"><Icon type="navicon-round"></Icon>&nbsp;&nbsp;我的项目</router-link></DropdownItem>
-            <DropdownItem><a href="#"><Icon type="star"></Icon>&nbsp;&nbsp;我的小组</a></DropdownItem>
             <DropdownItem><router-link to="/userInfo"><Icon type="gear-b"></Icon>&nbsp;&nbsp;个人设置</router-link></DropdownItem>
           <DropdownItem><a href="#" @click="quit"><Icon type="backspace"></Icon>&nbsp;&nbsp;退出</a></DropdownItem>
         </DropdownMenu>
@@ -92,6 +90,9 @@ export default {
       quit(){
         /*删除cookie*/
         this.showLogin=false;
+        this.$router.push({
+          path:'/'
+        });
         delCookie('email')
      }
  }

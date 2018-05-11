@@ -38,6 +38,13 @@
             <Icon type="edit" size="20"></Icon>
             我也要提问
           </a>
+          <Modal
+        v-model="modal2"
+        title="提出问题"
+        @on-ok="ok1(noticeValue)"
+        @on-cancel="cancel1">
+         <Input v-model="noticeValue" placeholder="请输入问题内容" style="width: 400px"/>
+    </Modal>
           <!-- <ul class="list-group">
             <li  class="list-group-item" v-for="item in questions" :key="item.index">
                 <span>{{item.content}}</span><span>{{item.createTime}}</span><span>{{item.userName}}</span>
@@ -66,6 +73,20 @@
               <Icon type="calendar" size="20"></Icon>
               日程安排
             </p>
+              <a href="#" slot="extra" @click="scheduleSubmit">
+                <Icon type="edit" size="20"></Icon>
+                新建日程
+              </a>
+              <Modal
+                v-model="modal3"
+                title="新建日程"
+                @on-ok="ok2(scheduleValue)"
+                @on-cancel="cancel2">
+                <Input v-model="scheduleValue" placeholder="请输入日程内容" style="width: 400px"/>
+                <br/>
+                <DatePicker type="date" placement="bottom-end" placeholder="开始时间" style="width: 200px" v-model="startTime"></DatePicker>
+                <DatePicker type="date" placement="bottom-end" placeholder="结束时间" style="width: 200px" v-model="endTime"></DatePicker>
+              </Modal>
             <full-calendar :events="fcEvents" lang="zh"></full-calendar>
           </Card>
       </div>
@@ -76,6 +97,14 @@
           <Icon type="grid" size="20"></Icon>
           小组信息
         </p>
+        <a href="#" slot="extra" @click="addTeam">
+          <Icon type="plus-circled"></Icon>
+          加入小组
+        </a>
+        <a href="#" slot="extra" @click="deleteTeam">
+          <Icon type="close-round"></Icon>
+          解散小组
+        </a>
         <div class="teaminfo">
           <p class="pbiaoqian">小组头像</p>
           <img v-lazy="'/static/image/'+this.photoName" style="width:300px;height:200px"/>
@@ -89,6 +118,9 @@
             <img v-lazy="'/static/image/'+item.head_photo" style="width:40px;height:40px" />{{item.nike_name}}
             <Tag checkable color="blue">{{item.duty}}</Tag>
             </li>
+           <li v-show="teammates==null">
+               暂无组员
+           </li>
       </ul>
       </div>
       </Card>
@@ -112,8 +144,16 @@ export default {
   },
   data() {
     return {
+      teamLeader:'',
       modal1:false,
+      modal2:false,
+      modal3:false,
+      startTime:'',
+      endTime:'',
+      total:'',
+      current:1,
       noticeValue:'',
+      scheduleValue:'',
       id: "",
       teamID:'',
       founderId: "",
@@ -139,6 +179,43 @@ export default {
     }
   },
   methods: {
+      addTeam(){
+          if(this.teamLeader.teammateid==this.founderId){
+            this.$Message.warning("您已经加入了该小组");
+          }else{
+        axios.post('http://localhost:9090/teammate/addTeammate',{
+          teamid:this.teamID,
+          teammateid:this.founderId,
+          authority:0,
+          duty:'组员'
+        }).then((res)=>{
+          this.teamList(this.teamID);
+          this.$Message.success("欢迎您进入该小组");
+        });
+          }
+      },
+    deleteTeam(){
+      axios.delete('http://localhost:9090/teammate/deleteTeammate',{
+          teamid:this.teamID
+      }).then((res)=>{
+        this.$Message.success("小组解散成功");
+      });
+    },
+    selectTeamLeader(id){
+        var param={
+          teamid:id
+        };
+      axios.get('http://localhost:9090/teammate/selectTeamLeader',{
+        params:param
+      }).then((res)=>{
+            console.log(res.data);
+          this.teamLeader = res.data;
+      });
+    },
+    handleClick(val) {
+      this.current = val;
+      this.questionsList(this.teamID);
+    },
     reply(){},
     getFounderId() {
       var param = {
@@ -168,7 +245,9 @@ export default {
     },
    questionsList(id){
        var param = {
-        teamid: id
+        teamid: id,
+         page: this.current,
+         pageSize: this.pageSize
       };
       this.$axios
         .get("http://localhost:9090/team/selectQuestionList", {
@@ -176,6 +255,7 @@ export default {
         })
         .then(result => {
           let res = result.data;
+          this.total = res.total;
           this.questions = res.list;
         });
    },
@@ -189,7 +269,6 @@ export default {
         })
         .then(result => {
           let res = result.data;
-          console.log(res);
           this.teammates = res;
         });
    },
@@ -209,15 +288,20 @@ export default {
           this.photoName =res[0].photoName;
           this.description = res[0].description;
           this.fcEvents = res;
-          console.log(res);
           this.questionsList(res[0].id);
           this.teammateList(res[0].id);
+          this.selectTeamLeader(res[0].id);
         });
     },
 
-    questionSubmit() {},
+    questionSubmit() {
+      this.modal2=true;
+    },
     updateNotice() {
       this.modal1=true;
+    },
+    scheduleSubmit(){
+         this.modal3=true;
     },
      ok (val) {
         axios.put('http://localhost:9090/team/updateTeam',{
@@ -231,6 +315,34 @@ export default {
             cancel () {
                 this.$Message.info('您已取消');
             },
+    ok1(val) {
+        axios.post('http://localhost:9090/question/addQuestion',{
+          teamid:this.teamID,
+          questionerid:this.founderId,
+          content:val,
+          createtime:new Date()
+        }).then((res)=>{
+          this.questionsList(this.teamID);
+           this.$Message.success("提问成功");
+        });
+            },
+            cancel1() {
+                this.$Message.info('您已取消');
+            },
+    ok2(val) {
+      axios.post('http://localhost:9090/schedule/addSchedule',{
+        teamid:this.teamID,
+        content:val,
+        createtime:this.startTime,
+        worktime:this.endTime
+      }).then((res)=>{
+        this.teamList(this.teamID);
+        this.$Message.success("新建日程成功");
+      });
+    },
+    cancel2() {
+      this.$Message.info('您已取消');
+    },
     handleClick() {},
      getFormatDate(timeStr, dateSeparator, timeSeparator) {
       dateSeparator = dateSeparator ? dateSeparator : "-";

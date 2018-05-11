@@ -38,6 +38,17 @@
           </Form>
         </TabPane>
         <TabPane label="头像上传">
+          <Upload
+            multiple
+            type="drag"
+            :on-success="handleSuccess"
+            action="http://localhost:9090/upload/img">
+            <div style="padding: 20px 0">
+              <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+              <p>上传头像</p>
+            </div>
+          </Upload>
+          <Button type="primary" @click="updatePhotoName">保存最新的修改</Button>
         </TabPane>
       </Tabs>
 
@@ -64,7 +75,8 @@
                 newpwd:''
             },
             email:'',
-            user:''
+            user:'',
+            photoValue:''
           }
       },
     methods:{
@@ -118,6 +130,22 @@
               });
             })
           }
+      },
+      handleSuccess (res, file) {
+        console.log(res);
+        this.photoValue = res;
+      },
+      updatePhotoName(){
+        axios.put('http://localhost:9090/user/updateUser',{
+          id:this.formItem.id,
+          headPhoto:this.photoValue
+        },{
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+          }
+        }).then((res)=>{
+          this.$Message.success('头像更新成功');
+        })
       }
     },
     mounted(){

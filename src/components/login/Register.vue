@@ -63,8 +63,8 @@ export default {
 			}else if(this.password!=this.passwordConfirm){
 				this.$Message.error("两次输入的密码不一致");
 			}else{
-				let user ={'nikeName':this.nikeName,'email':this.email,'password':this.password};
-				console.log(user);
+				let user ={'nikeName':this.nikeName,'email':this.email,'password':this.password,
+                   'headPhoto':'header2.jpg','specialty':'新增用户的爱好','description':'新增用户的描述','age':18,'area':'芜湖'};
 				this.$axios.post('http://localhost:9090/user/register',JSON.stringify(user),{
           headers: {
             'Content-Type': 'application/json;charset=UTF-8'
@@ -76,7 +76,7 @@ export default {
                 setTimeout(function(){
                 this.$router.push('/login')
               }.bind(this),1000)
-					 }else{
+					 }else if(res.data.state=="400"){
                this.$Message.warning("该邮箱已经被注册,请重新更换邮箱!");
            }
 				});

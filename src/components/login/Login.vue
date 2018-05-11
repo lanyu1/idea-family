@@ -18,7 +18,6 @@
 							<input autocomplete="off" name="password" class="fs14" placeholder="请输入密码" type="password" v-model="password"> </label>
 					</div>
 					<div class="tr mr105">
-           <a href="javascript:;" class="color-999 mr20" name="loginwithphone" style="">短信验证码登录</a>
            <a class="color-999" name="forgetpassword1" @click="forget">忘记登录密码</a></div>
 					<div class="user-btnbox"> <router-link class="ksui-btn" to="/register">免费注册</router-link>
 						<input class="ksui-btn-green" type="button" value="登录" @click="handleSubmit"> </div>

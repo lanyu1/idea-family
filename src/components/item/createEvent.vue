@@ -181,10 +181,24 @@ export default {
                     }
            }).then((res)=>{
              this.selectEvent(event.title);
+             this.createTeammate();
         })
         },
       createTeam(team){
         axios.post('http://localhost:9090/team/addTeam',JSON.stringify(team),{
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+          }
+        }).then((res)=>{
+        })
+      },
+      createTeammate(){
+        axios.post('http://localhost:9090/teammate/addTeammate',{
+            teamid:29,
+            teammateid:this.user.id,
+            authority:1,
+            duty:'组长'
+        },{
           headers: {
             'Content-Type': 'application/json;charset=UTF-8'
           }

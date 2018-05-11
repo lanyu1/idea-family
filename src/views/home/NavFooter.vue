@@ -9,7 +9,7 @@
 		</div>
         <footer>
 			<div class="introduction clearfix">
-				<p class="fl copyright"> <span>Copyright © 2014-2017 杭州捕翼网络科技有限公司 版权所有 | 浙ICP备14039480号 - 2 | 浙公网安备 33011002013084 号</span> <span>法律顾问：浙江泽大律师事务所</span> </p>
+				<p class="fl copyright"> <span>Copyright © 2018 开始吧</span> </p>
 			</div>
 		</footer>
   </div>

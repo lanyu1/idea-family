@@ -7,7 +7,7 @@
        <div class="c43">
          <div class="c40">{{event.title}}</div>
          <div class="c42">
-           <a href="#">加入小组</a>
+           <router-link :to="{name:'teamDetail',params:{id:event.id}}">进入小组</router-link>
            <a href="#">{{eventType.typecontent}}</a>
          </div>
          <div class="c44">
@@ -21,15 +21,15 @@
           <TabPane label="项目" icon="navicon-round">
             <img v-lazy="'/static/image/'+event.photoname"/>
           </TabPane>
-          <TabPane label="公告" icon="chatbubble">
+          <TabPane label="详细描述" icon="chatbubble">
             <div id="content" class="c16">
               <dl class="c17 c178">
                 <div class="divlist">
                   <div class="c179">
-                    <dt><a href="http://www.demohour.com/projects/369441/posts/256286">我们的项目「《跋涉者的足迹》探索人生的旅途上，我们将一路同行……</a></dt>
+                    <dt><a href="http://www.demohour.com/projects/369441/posts/256286">{{event.detaileddescription}}</a></dt>
                     <dd class="c62">
-                      <span>2017年09月22日 18:51</span>
-                      <p><a class="c64" href="http://www.demohour.com/projects/369441/posts/256286">4 评论</a></p>
+                      <span>{{event.createtime}}</span>
+                      <p></p>
                     </dd>
                   </div>
 
@@ -65,7 +65,7 @@
                     <p class='commentName'>#{{index + 1}} <span>{{comment.user.nikeName}}</span></p>
                     <p class='text'>{{comment.content}}</p>
                     <div class='options'>
-                        <p class='commentDate'>{{comment.commenttime}}</p>
+                        <p class='commentDate'>{{getFormatDate(comment.commenttime)}}</p>
                         <a href='#comment' data-scroll>
                             <span @click='reply(comment.user.nikeName)'>
                                 <i class='iconfont icon-huifu'></i>回复
@@ -105,7 +105,7 @@
                     <p class='commentName'>#{{index + 1}} <span>{{comment.user.nikeName}}</span></p>
                     <p class='text'>{{comment.content}}</p>
                     <div class='options'>
-                        <p class='commentDate'>{{comment.commenttime}}</p>
+                        <p class='commentDate'>{{getFormatDate(comment.commenttime)}}</p>
                         <a href='#comment' data-scroll>
                             <span @click='reply(comment.user.nikeName)'>
                                 <i class='iconfont icon-huifu'></i>回复
@@ -120,39 +120,6 @@
           </TabPane>
         </Tabs>
       </div>
-    </div>
-    <div class="right-content">
-      <div class="support">
-      <div class="c5">
-        <strong>{{event.support}}<b>人支持</b></strong>
-        <div class="c1">
-          <p style="width:70%"></p>
-        </div>
-        <div class="c2">
-          <strong>70%</strong>
-          <span>正在进行</span>
-        </div>
-        <div class="c3">
-          目标<b>¥</b>60人支持<span>项目没有目标人数成功，项目将会取消</span>
-        </div>
-      </div>
-      <div class="c4">
-        <span class="c6">正在进行</span>
-        <p>{{event.createtime}}</p>
-      </div>
-    </div>
-      <d1 class="project-initiator">
-        <dd class="c8">
-          <a href="#" target="_blank" class="v3"><img v-lazy="'/static/image/'+infoUser.headPhoto"><i></i></a>
-        </dd>
-        <dt><a href="#">{{infoUser.nikeName}}</a>
-        </dt>
-        <dd class="c9">
-          <a title="私信给 91悦读会" href="#" class="action-popup-login action-popup-verify action-popup-message message">发私信</a>
-          <span class="action-follow followed_1633633 hide" data-action-target="1633633" style="display: none;"><a class="c83" href="#" data-remote="true"><span>已关注</span></a>
-					</span>
-        </dd>
-      </d1>
     </div>
   </div>
 </div>
@@ -169,17 +136,6 @@ data(){
         address: '',
         content: '',
         imgName: '',
-       
-
-
-
-
-
-
-
-
-
-
       replyContent:'',
        showReply:false,
        email:'',
@@ -238,7 +194,6 @@ methods:{
       }
   },
   reply(name){
-    alert(name);
     this.showReply=true;
     this.content = '@' + name + ': ';
     // this.$refs.textBox.focus();
@@ -255,7 +210,6 @@ methods:{
       params:param
     }).then(result => {
       let res = result.data;
-      console.log(res);
       this.loginUser = res;
     });
   },
@@ -312,6 +266,25 @@ methods:{
       this.commentList = res.list;
     });
   },
+   getFormatDate(timeStr, dateSeparator, timeSeparator) {
+      dateSeparator = dateSeparator ? dateSeparator : "-";
+      timeSeparator = timeSeparator ? timeSeparator : ":";
+      var date = new Date(timeStr),
+        year = date.getFullYear(), // 获取完整的年份(4位,1970)
+        month = date.getMonth(), // 获取月份(0-11,0代表1月,用的时候记得加上1)
+        day = date.getDate(), // 获取日(1-31)
+        hour = date.getHours(), // 获取小时数(0-23)
+        minute = date.getMinutes(), // 获取分钟数(0-59)
+        seconds = date.getSeconds(), // 获取秒数(0-59)
+        Y = year + dateSeparator,
+        M = (month + 1 > 9 ? month + 1 : "0" + (month + 1)) + dateSeparator,
+        D = (day > 9 ? day : "0" + day) + " ",
+        h = (hour > 9 ? hour : "0" + hour) + timeSeparator,
+        m = (minute > 9 ? minute : "0" + minute) + timeSeparator,
+        s = seconds > 9 ? seconds : "0" + seconds,
+        formatDate = Y + M + D + h + m + s;
+      return formatDate;
+    }
 },
 components:{
   NavHeader
